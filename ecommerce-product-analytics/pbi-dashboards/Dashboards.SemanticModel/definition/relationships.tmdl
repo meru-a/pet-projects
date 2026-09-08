@@ -1,0 +1,238 @@
+relationship a54a31a7-0ac5-4660-a4ce-85f548932f28
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DIM_USER.SIGNUP_DATE
+	toColumn: LocalDateTable_e16ca968-c2e4-423d-961b-0fbeb01ae7b9.Date
+
+relationship 2a43c7f7-b901-4856-97c2-70445bbd675c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DIM_USER.SIGNUP_COHORT_MONTH
+	toColumn: LocalDateTable_d3a47cee-bcef-40c9-a846-fdb16209f455.Date
+
+relationship 472b648c-83fb-48c8-9369-d8a0138edf87
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DIM_USER.FIRST_ACTIVITY_DATE
+	toColumn: LocalDateTable_28ec497d-2d02-4477-a600-f923476a33c5.Date
+
+relationship 6d819a44-f658-4952-94ac-ec4a31bf0806
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DIM_USER.FIRST_PURCHASE_DATE
+	toColumn: LocalDateTable_d07ace85-9b20-4a45-bc7b-d6af490c7fdf.Date
+
+relationship db97de76-0561-4631-8392-1cfdcf567976
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FCT_CUSTOMER_VALUE.SIGNUP_DATE
+	toColumn: LocalDateTable_3f200d09-cf7d-4ecc-a219-a6ec14fe4188.Date
+
+relationship e74cc886-d0d0-469f-b134-2c1784820646
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FCT_CUSTOMER_VALUE.SIGNUP_COHORT_MONTH
+	toColumn: LocalDateTable_59158ebe-f7a0-478b-844b-95078852461a.Date
+
+relationship 0c770c6b-50a3-4457-a014-aa3e992ac930
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FCT_CUSTOMER_VALUE.FIRST_PURCHASE_DATE
+	toColumn: LocalDateTable_933dac3f-bc92-41ee-b73d-41dc25a6a4b7.Date
+
+relationship 2e1c09c3-0f4d-4c6d-a6a2-5c3875abfb10
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FCT_CUSTOMER_VALUE.LAST_PURCHASE_DATE
+	toColumn: LocalDateTable_6dd7b3fb-3300-40bd-be4e-c6548696667e.Date
+
+relationship ca939d75-3c1c-48bb-aaa2-8d22593d8750
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FCT_EVENTS.TIMESTAMP
+	toColumn: LocalDateTable_9d61fc56-7da9-440e-99f8-261e1a753f8d.Date
+
+relationship 9069edb2-ee4d-4c59-b02a-280c73bebf88
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FCT_EVENTS.EVENT_DATE
+	toColumn: LocalDateTable_c5be27bc-81f7-4c00-ac7d-05bb8bb57e24.Date
+
+relationship f5222c0d-4384-4b48-92f4-ba74e200a8e6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FCT_EVENTS.SESSION_START_DATE
+	toColumn: LocalDateTable_24cfdad1-7e33-4adb-a1d8-3aa0f03304de.Date
+
+relationship 12aeff4e-9c73-4f27-bafd-21676213f319
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FCT_SESSIONS.SESSION_DATE
+	toColumn: LocalDateTable_b537ed95-976f-4c8a-8f76-d9929e33e60f.Date
+
+relationship 1be009dc-3bc3-47b8-8ba3-7e913848be41
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FCT_SESSIONS.SESSION_START
+	toColumn: LocalDateTable_a925667d-34a7-4058-8fc3-9854c8636951.Date
+
+relationship e6a0432c-44a1-45dd-859e-3e6d33286ff1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FCT_SESSIONS.SESSION_END
+	toColumn: LocalDateTable_85102840-453b-4885-a68c-f22761ed8bf9.Date
+
+relationship ece31d85-5ece-453f-8e6e-5053f96d852d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FCT_USER_ACTIVITY.SIGNUP_DATE
+	toColumn: LocalDateTable_cbe3a73f-e4fd-4e77-bf60-f4f1eb16cd49.Date
+
+relationship 3248b5c1-afd0-4d94-91c2-21b2ff2a6f34
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FCT_USER_ACTIVITY.ACTIVITY_DATE
+	toColumn: LocalDateTable_0a164ee6-97bf-4297-8869-6a00bd7fc41c.Date
+
+relationship 1b4bdc5c-44c3-4169-9e07-b3d9c0c6d88e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FCT_USER_ACTIVITY.SIGNUP_COHORT_MONTH
+	toColumn: LocalDateTable_49db4f0c-1cfa-41ba-8e87-598d8450c997.Date
+
+relationship 060785ca-0c1b-467e-ac87-801de987aa1b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: CUSTOMERS_CLEAN.SIGNUP_DATE
+	toColumn: LocalDateTable_a87f8924-4169-4cf4-8f75-9a2bfd9fb79d.Date
+
+relationship a9d8f80b-b35e-455f-83be-62f7502f1863
+	joinOnDateBehavior: datePartOnly
+	fromColumn: EVENTS.TIMESTAMP
+	toColumn: LocalDateTable_64ed3d50-a752-4aab-a97e-22e21c75e73a.Date
+
+relationship c21c9e5a-98ec-491d-84be-da30467b44eb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REVIEWS.REVIEW_TIME
+	toColumn: LocalDateTable_0dedc96f-93da-4912-be08-6771e20e32d6.Date
+
+relationship 04c82297-144c-41a8-9de8-52c201f4b545
+	joinOnDateBehavior: datePartOnly
+	fromColumn: SESSIONS.START_TIME
+	toColumn: LocalDateTable_c8b6844c-8f09-4343-8b79-f84d9bd6e955.Date
+
+relationship AutoDetected_c6a77f3f-5016-4b30-83e8-dadccce9819c
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: FCT_CUSTOMER_VALUE.CUSTOMER_ID
+	toColumn: DIM_USER.CUSTOMER_ID
+
+relationship AutoDetected_7775d095-ca5b-4c9c-a0f2-da4781c5d6f0
+	fromColumn: FCT_EVENTS.CUSTOMER_ID
+	toColumn: DIM_USER.CUSTOMER_ID
+
+relationship AutoDetected_2791cbca-acee-4a1f-9961-c0525f80cd6f
+	fromColumn: FCT_SESSIONS.CUSTOMER_ID
+	toColumn: DIM_USER.CUSTOMER_ID
+
+relationship AutoDetected_f43b9eab-829c-40a8-acf4-5c76530b4edc
+	fromColumn: FCT_USER_ACTIVITY.CUSTOMER_ID
+	toColumn: DIM_USER.CUSTOMER_ID
+
+relationship AutoDetected_ab833157-fd95-4019-9ac4-38415ea59fbf
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: CUSTOMERS_CLEAN.CUSTOMER_ID
+	toColumn: DIM_USER.CUSTOMER_ID
+
+relationship AutoDetected_bb41c2fe-4de5-4348-9557-97fadb430224
+	fromColumn: ORDERS.CUSTOMER_ID
+	toColumn: DIM_USER.CUSTOMER_ID
+
+relationship AutoDetected_4036eb88-49aa-4a97-8ad0-4bc3e5257fee
+	fromColumn: SESSIONS.CUSTOMER_ID
+	toColumn: DIM_USER.CUSTOMER_ID
+
+relationship AutoDetected_6e28fb19-c308-43c0-a057-40a224c585de
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: EVENTS.EVENT_ID
+	toColumn: FCT_EVENTS.EVENT_ID
+
+relationship AutoDetected_1c7f883a-9200-4ef6-891c-4870964e1d68
+	isActive: false
+	fromColumn: EVENTS.SESSION_ID
+	toColumn: FCT_SESSIONS.SESSION_ID
+
+relationship AutoDetected_d794f07d-56ed-417e-ab6d-b7ec0fde7716
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: SESSIONS.SESSION_ID
+	toColumn: FCT_SESSIONS.SESSION_ID
+
+relationship AutoDetected_affe7291-ed8b-49ce-92e7-d324fc9fb61e
+	fromColumn: FCT_EVENTS.PRODUCT_ID
+	toColumn: PRODUCT_PERFORMANCE.PRODUCT_ID
+
+relationship AutoDetected_b4a5be85-5cb6-4067-8094-620703f4ae88
+	isActive: false
+	fromColumn: EVENTS.PRODUCT_ID
+	toColumn: PRODUCT_PERFORMANCE.PRODUCT_ID
+
+relationship AutoDetected_dccc4d3c-c7e3-48ac-a616-84690fcccda9
+	fromColumn: ORDER_ITEMS.PRODUCT_ID
+	toColumn: PRODUCT_PERFORMANCE.PRODUCT_ID
+
+relationship AutoDetected_c7223aa1-4d57-4ad4-b5a1-8c1eb26ec874
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: PRODUCTS.PRODUCT_ID
+	toColumn: PRODUCT_PERFORMANCE.PRODUCT_ID
+
+relationship AutoDetected_5c6566d7-f0d7-4fe3-9322-34e05875b523
+	fromColumn: REVIEWS.PRODUCT_ID
+	toColumn: PRODUCT_PERFORMANCE.PRODUCT_ID
+
+relationship AutoDetected_27de3955-a13b-40b7-8929-f20b6aed72fe
+	fromColumn: ORDER_ITEMS.ORDER_ID
+	toColumn: ORDERS.ORDER_ID
+
+relationship AutoDetected_5a8fef9d-872c-42a9-9551-39524f491db3
+	fromColumn: REVIEWS.ORDER_ID
+	toColumn: ORDERS.ORDER_ID
+
+relationship 6cb59173-1f85-4ab8-81d4-748a0a480654
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FCT_CUSTOMER_SEGMENTS.SIGNUP_DATE
+	toColumn: LocalDateTable_7fbdf598-a1bb-472d-9539-5e633c8838db.Date
+
+relationship 6fd2fc06-aa46-4735-aa75-8efcff1b2879
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FCT_CUSTOMER_SEGMENTS.SIGNUP_COHORT_MONTH
+	toColumn: LocalDateTable_886dec40-7eae-476b-8f0f-8ce5cb961ab2.Date
+
+relationship fbe02438-5768-4c6d-b135-af1ca0f05019
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FCT_CUSTOMER_SEGMENTS.FIRST_PURCHASE_DATE
+	toColumn: LocalDateTable_1da5c017-3a36-41d7-9ad5-a646b488dad1.Date
+
+relationship 78e9c3bb-5662-42b5-88ae-20a292f97abf
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FCT_CUSTOMER_SEGMENTS.LAST_PURCHASE_DATE
+	toColumn: LocalDateTable_f6a5ca4e-0d57-4d8b-984c-dfe1863c155b.Date
+
+relationship AutoDetected_67cbe055-f085-4ded-a4f1-d0aa9203932d
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: FCT_CUSTOMER_SEGMENTS.CUSTOMER_ID
+	toColumn: DIM_USER.CUSTOMER_ID
+
+relationship 6323e4a1-b187-e7be-d15c-dc18ed8ac947
+	isActive: false
+	fromColumn: REVIEWS.PRODUCT_ID
+	toColumn: PRODUCTS.PRODUCT_ID
+
+relationship 13410e0c-952e-4f15-af61-34ba5bef0a35
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Calendar.Date
+	toColumn: LocalDateTable_51d79edf-9d15-4a7a-80e1-2f711ae33306.Date
+
+relationship 13045361-c3c7-f2e1-7473-167fb77104bb
+	fromColumn: ORDERS.ORDER_TIME
+	toColumn: Calendar.Date
+
+relationship 811731f7-150c-d46c-073d-9c8ce74fb332
+	fromColumn: USER_RETENTION.SIGNUP_COHORT_MONTH
+	toColumn: Calendar.Date
+
+relationship AutoDetected_a0102c64-0853-4713-8d49-802d754939ee
+	fromColumn: FCT_REVIEWS_SENTIMENTS.PRODUCT_ID
+	toColumn: PRODUCT_PERFORMANCE.PRODUCT_ID
+
+relationship d030e40c-68c8-8a21-f3b6-6cd13249d375
+	fromColumn: FCT_REVIEWS_SENTIMENTS.REVIEW_TIME
+	toColumn: Calendar.Date
+

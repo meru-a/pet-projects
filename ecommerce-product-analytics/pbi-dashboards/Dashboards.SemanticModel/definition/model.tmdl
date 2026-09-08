@@ -1,0 +1,63 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["DIM_USER","FCT_CUSTOMER_VALUE","FCT_EVENTS","USER_RETENTION","PRODUCT_PERFORMANCE","FCT_SESSIONS","FCT_USER_ACTIVITY","CUSTOMERS_CLEAN","EVENTS","ORDER_ITEMS","ORDERS","PRODUCTS","REVIEWS","SESSIONS","AB_TEST_DATA","FCT_CUSTOMER_SEGMENTS","FCT_REVIEWS_SENTIMENTS"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DIM_USER
+ref table DateTableTemplate_950125ba-47a7-4bcc-b296-6d5c029cc6a6
+ref table LocalDateTable_e16ca968-c2e4-423d-961b-0fbeb01ae7b9
+ref table LocalDateTable_d3a47cee-bcef-40c9-a846-fdb16209f455
+ref table LocalDateTable_28ec497d-2d02-4477-a600-f923476a33c5
+ref table LocalDateTable_d07ace85-9b20-4a45-bc7b-d6af490c7fdf
+ref table FCT_CUSTOMER_VALUE
+ref table LocalDateTable_3f200d09-cf7d-4ecc-a219-a6ec14fe4188
+ref table LocalDateTable_59158ebe-f7a0-478b-844b-95078852461a
+ref table LocalDateTable_933dac3f-bc92-41ee-b73d-41dc25a6a4b7
+ref table LocalDateTable_6dd7b3fb-3300-40bd-be4e-c6548696667e
+ref table FCT_EVENTS
+ref table LocalDateTable_9d61fc56-7da9-440e-99f8-261e1a753f8d
+ref table LocalDateTable_c5be27bc-81f7-4c00-ac7d-05bb8bb57e24
+ref table LocalDateTable_24cfdad1-7e33-4adb-a1d8-3aa0f03304de
+ref table USER_RETENTION
+ref table PRODUCT_PERFORMANCE
+ref table FCT_SESSIONS
+ref table LocalDateTable_b537ed95-976f-4c8a-8f76-d9929e33e60f
+ref table LocalDateTable_a925667d-34a7-4058-8fc3-9854c8636951
+ref table LocalDateTable_85102840-453b-4885-a68c-f22761ed8bf9
+ref table FCT_USER_ACTIVITY
+ref table LocalDateTable_cbe3a73f-e4fd-4e77-bf60-f4f1eb16cd49
+ref table LocalDateTable_0a164ee6-97bf-4297-8869-6a00bd7fc41c
+ref table LocalDateTable_49db4f0c-1cfa-41ba-8e87-598d8450c997
+ref table CUSTOMERS_CLEAN
+ref table LocalDateTable_a87f8924-4169-4cf4-8f75-9a2bfd9fb79d
+ref table EVENTS
+ref table LocalDateTable_64ed3d50-a752-4aab-a97e-22e21c75e73a
+ref table ORDER_ITEMS
+ref table ORDERS
+ref table PRODUCTS
+ref table REVIEWS
+ref table LocalDateTable_0dedc96f-93da-4912-be08-6771e20e32d6
+ref table SESSIONS
+ref table LocalDateTable_c8b6844c-8f09-4343-8b79-f84d9bd6e955
+ref table AB_TEST_DATA
+ref table FCT_CUSTOMER_SEGMENTS
+ref table LocalDateTable_7fbdf598-a1bb-472d-9539-5e633c8838db
+ref table LocalDateTable_886dec40-7eae-476b-8f0f-8ce5cb961ab2
+ref table LocalDateTable_1da5c017-3a36-41d7-9ad5-a646b488dad1
+ref table LocalDateTable_f6a5ca4e-0d57-4d8b-984c-dfe1863c155b
+ref table '0. Measures'
+ref table Calendar
+ref table LocalDateTable_51d79edf-9d15-4a7a-80e1-2f711ae33306
+ref table FCT_REVIEWS_SENTIMENTS
+
+ref cultureInfo en-US
+

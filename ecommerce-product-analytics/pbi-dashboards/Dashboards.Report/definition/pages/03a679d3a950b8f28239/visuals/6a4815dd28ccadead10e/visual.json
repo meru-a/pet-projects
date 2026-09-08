@@ -1,0 +1,118 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "6a4815dd28ccadead10e",
+  "position": {
+    "x": 753.385094457131,
+    "y": 435.36474984430146,
+    "z": 15000,
+    "height": 280.60618642308492,
+    "width": 498.28856134523562,
+    "tabOrder": 15000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Key Takeaways:",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI Semibold",
+                      "fontSize": "14pt",
+                      "color": "#172554"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Based on the results, we reject the null hypothesis at conventional significance levels (α = 0.05). The ",
+                    "textStyle": {
+                      "fontSize": "11pt",
+                      "color": "#506d97"
+                    }
+                  },
+                  {
+                    "value": "difference was statistically significant",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "11pt",
+                      "color": "#506d97"
+                    }
+                  },
+                  {
+                    "value": " (z = −10.59, p < 0.001), with non-overlapping 95% confidence intervals.",
+                    "textStyle": {
+                      "fontSize": "11pt",
+                      "color": "#506d97"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "We can conclude that",
+                    "textStyle": {
+                      "fontSize": "11pt",
+                      "color": "#506d97"
+                    }
+                  },
+                  {
+                    "value": " there is no statistically significant evidence that treatment effectiveness varies with ad exposure.",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "11pt",
+                      "color": "#506d97"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "The treatment substantially increases purchase probability, but the magnitude of this treatment effect does not appear to depend on the number of ads a user sees.",
+                    "textStyle": {
+                      "fontSize": "11pt",
+                      "color": "#506d97"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

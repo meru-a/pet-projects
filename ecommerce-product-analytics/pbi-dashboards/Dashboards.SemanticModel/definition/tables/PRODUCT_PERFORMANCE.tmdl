@@ -1,0 +1,188 @@
+table PRODUCT_PERFORMANCE
+	lineageTag: 617f2a30-4788-4c7f-b479-76d861bc4c3b
+
+	column PRODUCT_ID
+		dataType: double
+		lineageTag: 0d4775dc-38b5-4728-a409-2c6d6e51eaa3
+		summarizeBy: none
+		sourceColumn: PRODUCT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NAME
+		dataType: string
+		lineageTag: 474250d4-b0f1-4d20-a82e-4537a621d53f
+		summarizeBy: none
+		sourceColumn: NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column CATEGORY
+		dataType: string
+		lineageTag: cdd8ecc5-229e-4122-9c5a-2f3601a49595
+		summarizeBy: none
+		sourceColumn: CATEGORY
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRICE_USD
+		dataType: double
+		lineageTag: 527503dc-bd94-4cd5-91e9-f85e5283ec11
+		summarizeBy: sum
+		sourceColumn: PRICE_USD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column COST_USD
+		dataType: double
+		lineageTag: 120d6b27-0db6-43ee-b44f-87606d5157ea
+		summarizeBy: sum
+		sourceColumn: COST_USD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MARGIN_USD
+		dataType: double
+		formatString: \$#,0.0;(\$#,0.0);\$#,0.0
+		lineageTag: 4ebcba98-915d-454c-822c-1539c6c17f32
+		summarizeBy: sum
+		sourceColumn: MARGIN_USD
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_VIEWS
+		dataType: double
+		lineageTag: 396a72c7-4bc7-4ac7-87e3-7eb3ec8786db
+		summarizeBy: sum
+		sourceColumn: PRODUCT_VIEWS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ADD_TO_CART_EVENTS
+		dataType: double
+		lineageTag: 85d06549-6338-425c-b36b-45c25403bc5a
+		summarizeBy: sum
+		sourceColumn: ADD_TO_CART_EVENTS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VIEW_SESSIONS
+		dataType: double
+		lineageTag: e42a0354-fcdd-4861-9949-065399181d23
+		summarizeBy: sum
+		sourceColumn: VIEW_SESSIONS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CART_SESSIONS
+		dataType: double
+		lineageTag: a959d14a-6a8a-49c1-8ac5-677b72311bf5
+		summarizeBy: sum
+		sourceColumn: CART_SESSIONS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ORDER_COUNT
+		dataType: double
+		lineageTag: 8eec76af-3cd3-4386-981a-62bdc955d875
+		summarizeBy: sum
+		sourceColumn: ORDER_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UNITS_SOLD
+		dataType: double
+		lineageTag: f00cf8d3-be06-489e-9f35-c6822823153b
+		summarizeBy: sum
+		sourceColumn: UNITS_SOLD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column GROSS_PRODUCT_REVENUE
+		dataType: double
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 6083f942-a750-43e2-9dbf-acbd82809e07
+		summarizeBy: sum
+		sourceColumn: GROSS_PRODUCT_REVENUE
+
+		annotation SummarizationSetBy = Automatic
+
+	column NET_PRODUCT_REVENUE
+		dataType: double
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: c2ce1de9-de6f-4bdd-9a16-93d0aae91eab
+		summarizeBy: sum
+		sourceColumn: NET_PRODUCT_REVENUE
+
+		annotation SummarizationSetBy = Automatic
+
+	column VIEW_TO_CART_RATE
+		dataType: double
+		lineageTag: c5c486c6-e1b5-464a-9342-b5397e7f589f
+		summarizeBy: sum
+		sourceColumn: VIEW_TO_CART_RATE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VIEW_TO_PURCHASE_RATE
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 7213649a-d047-4f41-801e-c4de0e0c1398
+		summarizeBy: sum
+		sourceColumn: VIEW_TO_PURCHASE_RATE
+
+		annotation SummarizationSetBy = Automatic
+
+	column VIEW_CUSTOMERS
+		dataType: double
+		lineageTag: 5071ee4e-0923-46bc-8d9c-c82ef4981fbb
+		summarizeBy: sum
+		sourceColumn: VIEW_CUSTOMERS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PURCHASE_CUSTOMERS
+		dataType: double
+		lineageTag: 809c79ec-f7d1-4224-b8b0-19ebdad15894
+		summarizeBy: sum
+		sourceColumn: PURCHASE_CUSTOMERS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition PRODUCT_PERFORMANCE = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("VTXZDMH-DP38522.snowflakecomputing.com","COMPUTE_WH",[Implementation="2.0"]),
+				    PRODUCT_ANALYTICS_Database = Source{[Name="PRODUCT_ANALYTICS",Kind="Database"]}[Data],
+				    ANALYTICS_Schema = PRODUCT_ANALYTICS_Database{[Name="ANALYTICS",Kind="Schema"]}[Data],
+				    PRODUCT_PERFORMANCE_View = ANALYTICS_Schema{[Name="PRODUCT_PERFORMANCE",Kind="View"]}[Data]
+				in
+				    PRODUCT_PERFORMANCE_View
+
+	annotation PBI_ResultType = Table
+

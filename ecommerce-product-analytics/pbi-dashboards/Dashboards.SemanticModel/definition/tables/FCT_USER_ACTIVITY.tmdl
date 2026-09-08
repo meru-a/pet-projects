@@ -1,0 +1,240 @@
+table FCT_USER_ACTIVITY
+	isHidden
+	lineageTag: b69d02d6-2eca-40b5-bbf4-c7b0dc07cbe6
+
+	column CUSTOMER_ID
+		dataType: double
+		isHidden
+		lineageTag: ac35534b-fc43-4fd1-a319-86cdfa8a8744
+		summarizeBy: none
+		sourceColumn: CUSTOMER_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SIGNUP_DATE
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: 34c9db15-9e10-4182-acfc-00e863ebaa12
+		summarizeBy: none
+		sourceColumn: SIGNUP_DATE
+
+		variation Variation
+			isDefault
+			relationship: ece31d85-5ece-453f-8e6e-5053f96d852d
+			defaultHierarchy: LocalDateTable_cbe3a73f-e4fd-4e77-bf60-f4f1eb16cd49.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CUSTOMER_COUNTRY
+		dataType: string
+		isHidden
+		lineageTag: a09be150-75c2-4705-9175-7198d1c472a8
+		summarizeBy: none
+		sourceColumn: CUSTOMER_COUNTRY
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column MARKETING_OPT_IN
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: fe71a69d-324b-4e6e-97f2-0ddab5dae364
+		summarizeBy: none
+		sourceColumn: MARKETING_OPT_IN
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACTIVITY_DATE
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: 70d80801-7616-4dfa-9204-995b5806991b
+		summarizeBy: none
+		sourceColumn: ACTIVITY_DATE
+
+		variation Variation
+			isDefault
+			relationship: 3248b5c1-afd0-4d94-91c2-21b2ff2a6f34
+			defaultHierarchy: LocalDateTable_0a164ee6-97bf-4297-8869-6a00bd7fc41c.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column SESSION_COUNT
+		dataType: double
+		isHidden
+		lineageTag: 917879ec-de6e-4bdf-af22-95e9b00a0a7c
+		summarizeBy: sum
+		sourceColumn: SESSION_COUNT
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column EVENT_COUNT
+		dataType: double
+		isHidden
+		lineageTag: b576ffb7-fbe5-482d-b6bd-55b06dc5943d
+		summarizeBy: sum
+		sourceColumn: EVENT_COUNT
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PAGE_VIEW_COUNT
+		dataType: double
+		isHidden
+		lineageTag: 81d03220-3947-4209-b48a-d948226f8181
+		summarizeBy: sum
+		sourceColumn: PAGE_VIEW_COUNT
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ADD_TO_CART_COUNT
+		dataType: double
+		isHidden
+		lineageTag: af3b11ab-78c3-463c-aba7-2816f7e50454
+		summarizeBy: sum
+		sourceColumn: ADD_TO_CART_COUNT
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CHECKOUT_COUNT
+		dataType: double
+		isHidden
+		lineageTag: 559880bc-5b28-49d1-bda1-c06e9f4bf8d8
+		summarizeBy: sum
+		sourceColumn: CHECKOUT_COUNT
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PURCHASE_COUNT
+		dataType: double
+		isHidden
+		lineageTag: feb7bf18-fa6a-4ee3-935b-deba28818212
+		summarizeBy: sum
+		sourceColumn: PURCHASE_COUNT
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PURCHASE_EVENT_REVENUE
+		dataType: double
+		isHidden
+		lineageTag: bec25ab7-ddc0-4bea-a793-97b5ef512735
+		summarizeBy: sum
+		sourceColumn: PURCHASE_EVENT_REVENUE
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ACTIVE_FLAG
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 18ed6aee-1011-4c9c-8e14-c3ca47535192
+		summarizeBy: none
+		sourceColumn: ACTIVE_FLAG
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PURCHASER_FLAG
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3321b83a-f5da-4fee-bd4f-28a95d0c9c05
+		summarizeBy: none
+		sourceColumn: PURCHASER_FLAG
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DAYS_SINCE_SIGNUP
+		dataType: double
+		isHidden
+		lineageTag: 783c34fa-0d25-4805-851c-2de5ea4696e6
+		summarizeBy: sum
+		sourceColumn: DAYS_SINCE_SIGNUP
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SIGNUP_COHORT_MONTH
+		dataType: dateTime
+		isHidden
+		formatString: Short Date
+		lineageTag: b4a4b8d7-8b70-4308-ab5e-8f0d27d31b44
+		summarizeBy: none
+		sourceColumn: SIGNUP_COHORT_MONTH
+
+		variation Variation
+			isDefault
+			relationship: 1b4bdc5c-44c3-4169-9e07-b3d9c0c6d88e
+			defaultHierarchy: LocalDateTable_49db4f0c-1cfa-41ba-8e87-598d8450c997.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition FCT_USER_ACTIVITY = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("VTXZDMH-DP38522.snowflakecomputing.com","COMPUTE_WH",[Implementation="2.0"]),
+				    PRODUCT_ANALYTICS_Database = Source{[Name="PRODUCT_ANALYTICS",Kind="Database"]}[Data],
+				    ANALYTICS_Schema = PRODUCT_ANALYTICS_Database{[Name="ANALYTICS",Kind="Schema"]}[Data],
+				    FCT_USER_ACTIVITY_Table = ANALYTICS_Schema{[Name="FCT_USER_ACTIVITY",Kind="Table"]}[Data]
+				in
+				    FCT_USER_ACTIVITY_Table
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,187 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "82bcfcb20ce5b41b0858",
+  "position": {
+    "x": 739.88081440271992,
+    "y": 215.21245428321231,
+    "z": 16000,
+    "height": 305.9393190130325,
+    "width": 491.61283675887296,
+    "tabOrder": 16000
+  },
+  "visual": {
+    "visualType": "scatterChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FCT_CUSTOMER_SEGMENTS"
+                    }
+                  },
+                  "Property": "CUSTOMER_ID"
+                }
+              },
+              "queryRef": "FCT_CUSTOMER_SEGMENTS.CUSTOMER_ID",
+              "nativeQueryRef": "CUSTOMER_ID",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FCT_CUSTOMER_SEGMENTS"
+                    }
+                  },
+                  "Property": "KMEANS_CLUSTER"
+                }
+              },
+              "queryRef": "FCT_CUSTOMER_SEGMENTS.KMEANS_CLUSTER",
+              "nativeQueryRef": "KMEANS_CLUSTER"
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "FCT_CUSTOMER_SEGMENTS"
+                        }
+                      },
+                      "Property": "DAYS_SINCE_LAST_PURCHASE_END_2025"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(FCT_CUSTOMER_SEGMENTS.DAYS_SINCE_LAST_PURCHASE_END_2025)",
+              "nativeQueryRef": "Days since last purchase",
+              "active": true,
+              "displayName": "Days since last purchase"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "FCT_CUSTOMER_SEGMENTS"
+                        }
+                      },
+                      "Property": "TOTAL_REVENUE"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(FCT_CUSTOMER_SEGMENTS.TOTAL_REVENUE)",
+              "nativeQueryRef": "Total revenue",
+              "displayName": "Total revenue"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "valueAxis": [
+        {
+          "properties": {
+            "gridlineShow": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "gridlineShow": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "legend": [
+        {
+          "properties": {
+            "showTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'K-Means Customer Segments'"
+                }
+              }
+            },
+            "heading": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Normal'"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#172554'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

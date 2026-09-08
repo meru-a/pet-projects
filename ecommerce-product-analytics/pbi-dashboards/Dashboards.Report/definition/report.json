@@ -1,0 +1,138 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY26SU05",
+      "reportVersionAtImport": {
+        "visual": "2.9.0",
+        "report": "3.3.0",
+        "page": "2.3.1"
+      },
+      "type": "SharedResources"
+    },
+    "customTheme": {
+      "name": "NewExecutive",
+      "reportVersionAtImport": {
+        "visual": "2.10.0",
+        "report": "3.4.0",
+        "page": "2.3.1"
+      },
+      "type": "SharedResources"
+    }
+  },
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "CY26SU05",
+          "path": "BaseThemes/CY26SU05.json",
+          "type": "BaseTheme"
+        },
+        {
+          "name": "NewExecutive",
+          "path": "BuiltInThemes/NewExecutive.json",
+          "type": "CustomTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "icons8-customer-retention-64-r8006267428505387.png",
+          "path": "icons8-customer-retention-64-r8006267428505387.png",
+          "type": "Image"
+        },
+        {
+          "name": "icons8-filter-50-recolored09456489435555049.png",
+          "path": "icons8-filter-50-recolored09456489435555049.png",
+          "type": "Image"
+        },
+        {
+          "name": "icons8-filter-50-recolored17669784416391732.png",
+          "path": "icons8-filter-50-recolored17669784416391732.png",
+          "type": "Image"
+        },
+        {
+          "name": "icons8-filter-50-recolored3105489617372953.png",
+          "path": "icons8-filter-50-recolored3105489617372953.png",
+          "type": "Image"
+        },
+        {
+          "name": "icons8-overview-68-recolored34516030270958276.png",
+          "path": "icons8-overview-68-recolored34516030270958276.png",
+          "type": "Image"
+        },
+        {
+          "name": "icons8-pass-fail-50-recolored4155386043733732.png",
+          "path": "icons8-pass-fail-50-recolored4155386043733732.png",
+          "type": "Image"
+        },
+        {
+          "name": "icons8-pass-fail-50-recolored8820384567786297.png",
+          "path": "icons8-pass-fail-50-recolored8820384567786297.png",
+          "type": "Image"
+        },
+        {
+          "name": "icons8-popular-50-recolored7422541697666589.png",
+          "path": "icons8-popular-50-recolored7422541697666589.png",
+          "type": "Image"
+        },
+        {
+          "name": "icons8-shopping-trolley-64-rec8474653419672623.png",
+          "path": "icons8-shopping-trolley-64-rec8474653419672623.png",
+          "type": "Image"
+        },
+        {
+          "name": "icons8-stocks-32-recolored08863789490509633.png",
+          "path": "icons8-stocks-32-recolored08863789490509633.png",
+          "type": "Image"
+        },
+        {
+          "name": "icons8-user-groups-50-recolore5566254007181103.png",
+          "path": "icons8-user-groups-50-recolore5566254007181103.png",
+          "type": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "exportDataMode": "AllowSummarized",
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "useDefaultAggregateDisplayName": true
+  }
+}

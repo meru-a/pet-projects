@@ -1,0 +1,95 @@
+table SESSIONS
+	isHidden
+	lineageTag: 589e5fc1-743c-455e-9595-a39fc3c5f4bb
+
+	column SESSION_ID
+		dataType: double
+		isHidden
+		lineageTag: aedef41e-8a49-4292-a5d0-8c17da39b564
+		summarizeBy: count
+		sourceColumn: SESSION_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CUSTOMER_ID
+		dataType: double
+		isHidden
+		lineageTag: ef20331e-0205-4351-89c5-fde56987a614
+		summarizeBy: none
+		sourceColumn: CUSTOMER_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column START_TIME
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: f319761c-183d-47b3-b7d2-f807910000c2
+		summarizeBy: none
+		sourceColumn: START_TIME
+
+		variation Variation
+			isDefault
+			relationship: 04c82297-144c-41a8-9de8-52c201f4b545
+			defaultHierarchy: LocalDateTable_c8b6844c-8f09-4343-8b79-f84d9bd6e955.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DEVICE
+		dataType: string
+		isHidden
+		lineageTag: 21cd2890-f033-4cef-b539-12840ab9038e
+		summarizeBy: none
+		sourceColumn: DEVICE
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SOURCE
+		dataType: string
+		isHidden
+		lineageTag: 2d3992f5-af64-42b9-a17a-5620c49863b2
+		summarizeBy: none
+		sourceColumn: SOURCE
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column COUNTRY
+		dataType: string
+		isHidden
+		lineageTag: eaa31a08-50bc-4622-960d-607257e1d843
+		summarizeBy: none
+		sourceColumn: COUNTRY
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition SESSIONS = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("VTXZDMH-DP38522.snowflakecomputing.com","COMPUTE_WH",[Implementation="2.0"]),
+				    PRODUCT_ANALYTICS_Database = Source{[Name="PRODUCT_ANALYTICS",Kind="Database"]}[Data],
+				    RAW_EVENTS_Schema = PRODUCT_ANALYTICS_Database{[Name="RAW_EVENTS",Kind="Schema"]}[Data],
+				    SESSIONS_Table = RAW_EVENTS_Schema{[Name="SESSIONS",Kind="Table"]}[Data]
+				in
+				    SESSIONS_Table
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+

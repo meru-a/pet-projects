@@ -1,0 +1,320 @@
+table FCT_CUSTOMER_SEGMENTS
+	lineageTag: 052dce16-25c0-4133-a530-45a32e47d5cc
+
+	column CUSTOMER_ID
+		dataType: double
+		lineageTag: dffb0619-1309-4de6-b2b7-10d79aab36e6
+		summarizeBy: none
+		sourceColumn: CUSTOMER_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SIGNUP_DATE
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 7c55586f-f7a1-4603-952a-54afd19a5ad6
+		summarizeBy: none
+		sourceColumn: SIGNUP_DATE
+
+		variation Variation
+			isDefault
+			relationship: 6cb59173-1f85-4ab8-81d4-748a0a480654
+			defaultHierarchy: LocalDateTable_7fbdf598-a1bb-472d-9539-5e633c8838db.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column SIGNUP_COHORT_MONTH
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6b7ab82b-fa1c-4331-b588-7a2ab16c8c3f
+		summarizeBy: none
+		sourceColumn: SIGNUP_COHORT_MONTH
+
+		variation Variation
+			isDefault
+			relationship: 6fd2fc06-aa46-4735-aa75-8efcff1b2879
+			defaultHierarchy: LocalDateTable_886dec40-7eae-476b-8f0f-8ce5cb961ab2.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column COUNTRY
+		dataType: string
+		lineageTag: 25d14abb-b282-41a0-84ee-8e5183b2ac81
+		summarizeBy: none
+		sourceColumn: COUNTRY
+
+		annotation SummarizationSetBy = Automatic
+
+	column ORDER_COUNT
+		dataType: double
+		lineageTag: fc4c2e6e-c73f-4692-9e0e-32d34249d4b8
+		summarizeBy: sum
+		sourceColumn: ORDER_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TOTAL_ITEMS
+		dataType: double
+		lineageTag: 52f999a6-542f-441a-bfaf-17ab847040c3
+		summarizeBy: sum
+		sourceColumn: TOTAL_ITEMS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TOTAL_REVENUE
+		dataType: double
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 7ffd048d-a23d-4ffd-b692-f5f56a0ce6e9
+		summarizeBy: sum
+		sourceColumn: TOTAL_REVENUE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column AVG_ORDER_VALUE
+		dataType: double
+		lineageTag: 4a01878a-ffbd-43e9-8921-80761582d52c
+		summarizeBy: sum
+		sourceColumn: AVG_ORDER_VALUE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FIRST_PURCHASE_DATE
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: bc88e4a6-e05f-486c-8b53-06c7b74d77a7
+		summarizeBy: none
+		sourceColumn: FIRST_PURCHASE_DATE
+
+		variation Variation
+			isDefault
+			relationship: fbe02438-5768-4c6d-b135-af1ca0f05019
+			defaultHierarchy: LocalDateTable_1da5c017-3a36-41d7-9ad5-a646b488dad1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column LAST_PURCHASE_DATE
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 785aeda9-ceb4-4e68-9c76-78c6ff2dd671
+		summarizeBy: none
+		sourceColumn: LAST_PURCHASE_DATE
+
+		variation Variation
+			isDefault
+			relationship: 78e9c3bb-5662-42b5-88ae-20a292f97abf
+			defaultHierarchy: LocalDateTable_f6a5ca4e-0d57-4d8b-984c-dfe1863c155b.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CUSTOMER_LIFETIME_DAYS
+		dataType: double
+		lineageTag: c40f1ead-56a9-44b5-9537-80cb7d363643
+		summarizeBy: sum
+		sourceColumn: CUSTOMER_LIFETIME_DAYS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DAYS_SINCE_LAST_PURCHASE_END_2025
+		dataType: double
+		lineageTag: 28dac285-59d8-476b-8b91-e8578fcf0df3
+		summarizeBy: sum
+		sourceColumn: DAYS_SINCE_LAST_PURCHASE_END_2025
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column REVENUE_30D
+		dataType: double
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: e4e5419e-f851-4aae-bd4e-16eafc074747
+		summarizeBy: sum
+		sourceColumn: REVENUE_30D
+
+		annotation SummarizationSetBy = Automatic
+
+	column REVENUE_90D
+		dataType: double
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: eb5c3e93-bb37-42f8-872f-502b895aa559
+		summarizeBy: sum
+		sourceColumn: REVENUE_90D
+
+		annotation SummarizationSetBy = Automatic
+
+	column R_SCORE
+		dataType: double
+		lineageTag: ee7732bc-6373-4032-8ac2-d5294357e081
+		summarizeBy: sum
+		sourceColumn: R_SCORE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column F_SCORE
+		dataType: double
+		lineageTag: 8e8732d8-9ff6-485b-b5c6-b292e1fec832
+		summarizeBy: sum
+		sourceColumn: F_SCORE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column M_SCORE
+		dataType: double
+		lineageTag: 02c67e59-16f6-425c-b383-07b48e1e8075
+		summarizeBy: sum
+		sourceColumn: M_SCORE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RFM_SCORE
+		dataType: double
+		lineageTag: 4efd2847-71a1-4737-a067-3c8e3de3bdbd
+		summarizeBy: sum
+		sourceColumn: RFM_SCORE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"FCT_CUSTOMER_SEGMENTS","TableItemName":"RFM_SCORE (bins)","ObjectType":4},"LinkType":"UsedInGroup"}]
+
+	column KMEANS_CLUSTER
+		dataType: double
+		formatString: 0
+		lineageTag: 2b7d6839-90bd-4bfa-9874-7b3c9c259068
+		summarizeBy: sum
+		sourceColumn: KMEANS_CLUSTER
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'RFM_SCORE (bins)' =
+			IF(
+				ISBLANK('FCT_CUSTOMER_SEGMENTS'[RFM_SCORE]),
+				BLANK(),
+				IF(
+					'FCT_CUSTOMER_SEGMENTS'[RFM_SCORE] >= 0,
+					ROUNDDOWN('FCT_CUSTOMER_SEGMENTS'[RFM_SCORE] / 100, 0) * 100,
+					ROUNDUP('FCT_CUSTOMER_SEGMENTS'[RFM_SCORE] / 100, 0) * 100
+				)
+			)
+		lineageTag: 53a5ee90-7374-4bb3-9256-8714cb7569b6
+		summarizeBy: none
+
+		extendedProperty GroupingMetadata =
+				{
+				  "version": 0,
+				  "groupedColumns": [
+				    {
+				      "Column": {
+				        "Expression": {
+				          "SourceRef": {
+				            "Entity": "FCT_CUSTOMER_SEGMENTS"
+				          }
+				        },
+				        "Property": "RFM_SCORE"
+				      }
+				    }
+				  ],
+				  "binningMetadata": {
+				    "binSize": {
+				      "value": 100.0,
+				      "unit": 0
+				    }
+				  }
+				}
+
+		annotation GroupingDesignState = {"Version":0,"Sources":[{"Name":"f","Entity":"FCT_CUSTOMER_SEGMENTS"}],"GroupedColumns":[{"Column":{"Expression":{"SourceRef":{"Source":"f"}},"Property":"RFM_SCORE"}}],"BinItem":{"Expression":{"Floor":{"Expression":{"Column":{"Expression":{"SourceRef":{"Source":"f"}},"Property":"RFM_SCORE"}},"Size":100.0}}}}
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'RFM Segment' =
+			
+			SWITCH(
+			    TRUE(),
+			
+			    [R_SCORE] >= 4 &&
+			    [F_SCORE] >= 4 &&
+			    [M_SCORE] >= 4,
+			    "Champions",
+			
+			    [R_SCORE] <= 2 &&
+			    [F_SCORE] >= 4 &&
+			    [M_SCORE] >= 4,
+			    "Can't Lose Them",
+			
+			    [R_SCORE] >= 3 &&
+			    [F_SCORE] >= 4,
+			    "Loyal Customers",
+			
+			    [R_SCORE] = 5 &&
+			    [F_SCORE] <= 2,
+			    "New Customers",
+			
+			    [R_SCORE] >= 4 &&
+			    [F_SCORE] >= 2,
+			    "Potential Loyalists",
+			
+			    [R_SCORE] >= 2 &&
+			    [R_SCORE] <= 3 &&
+			    [F_SCORE] >= 3,
+			    "At Risk",
+			
+			    [R_SCORE] <= 2 &&
+			    [F_SCORE] <= 2 &&
+			    [M_SCORE] <= 2,
+			    "Hibernating",
+			
+			    [R_SCORE] = 1 &&
+			    [F_SCORE] <= 2,
+			    "Lost",
+			
+			    "Other"
+			)
+		lineageTag: d4a1728d-e536-4ec5-8af4-1400c77c5032
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FCT_CUSTOMER_SEGMENTS = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("VTXZDMH-DP38522.snowflakecomputing.com","COMPUTE_WH",[Implementation="2.0"]),
+				    PRODUCT_ANALYTICS_Database = Source{[Name="PRODUCT_ANALYTICS",Kind="Database"]}[Data],
+				    PUBLIC_Schema = PRODUCT_ANALYTICS_Database{[Name="PUBLIC",Kind="Schema"]}[Data],
+				    FCT_CUSTOMER_SEGMENTS_Table = PUBLIC_Schema{[Name="FCT_CUSTOMER_SEGMENTS",Kind="Table"]}[Data]
+				in
+				    FCT_CUSTOMER_SEGMENTS_Table
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

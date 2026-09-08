@@ -1,0 +1,154 @@
+table EVENTS
+	isHidden
+	lineageTag: b4564717-f742-446e-bb9f-173c64012a9b
+
+	column EVENT_ID
+		dataType: double
+		isHidden
+		lineageTag: 366f7c89-daea-494e-9b22-41907139709d
+		summarizeBy: none
+		sourceColumn: EVENT_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SESSION_ID
+		dataType: double
+		isHidden
+		lineageTag: 091e9f88-f0e5-4d94-b639-05f5be4fe9eb
+		summarizeBy: count
+		sourceColumn: SESSION_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TIMESTAMP
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: e0169829-a525-4139-a1d3-233ce7aa7d53
+		summarizeBy: none
+		sourceColumn: TIMESTAMP
+
+		variation Variation
+			isDefault
+			relationship: a9d8f80b-b35e-455f-83be-62f7502f1863
+			defaultHierarchy: LocalDateTable_64ed3d50-a752-4aab-a97e-22e21c75e73a.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column EVENT_TYPE
+		dataType: string
+		isHidden
+		lineageTag: 767f1862-efb5-4bd4-8eea-db290a52bfd7
+		summarizeBy: none
+		sourceColumn: EVENT_TYPE
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_ID
+		dataType: double
+		isHidden
+		lineageTag: 519869ae-3153-418b-bb16-6bce7960242c
+		summarizeBy: count
+		sourceColumn: PRODUCT_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QTY
+		dataType: double
+		isHidden
+		lineageTag: 8b5947af-da3c-44e2-9634-092fb297adc2
+		summarizeBy: sum
+		sourceColumn: QTY
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CART_SIZE
+		dataType: double
+		isHidden
+		lineageTag: 32580b0f-dd7a-4ac2-9d0f-e50669a0b08d
+		summarizeBy: sum
+		sourceColumn: CART_SIZE
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PAYMENT
+		dataType: string
+		isHidden
+		lineageTag: 93020e26-a2c1-4f14-8f5f-f668b4e94511
+		summarizeBy: none
+		sourceColumn: PAYMENT
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISCOUNT_PCT
+		dataType: double
+		isHidden
+		lineageTag: 22cc71ce-f3d6-4fd2-88c7-d7cb5582ab93
+		summarizeBy: sum
+		sourceColumn: DISCOUNT_PCT
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AMOUNT_USD
+		dataType: double
+		isHidden
+		lineageTag: 8c57b7f7-c8c5-41f8-8f79-07d385a8f6e7
+		summarizeBy: sum
+		sourceColumn: AMOUNT_USD
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition EVENTS = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("VTXZDMH-DP38522.snowflakecomputing.com","COMPUTE_WH",[Implementation="2.0"]),
+				    PRODUCT_ANALYTICS_Database = Source{[Name="PRODUCT_ANALYTICS",Kind="Database"]}[Data],
+				    RAW_EVENTS_Schema = PRODUCT_ANALYTICS_Database{[Name="RAW_EVENTS",Kind="Schema"]}[Data],
+				    EVENTS_Table = RAW_EVENTS_Schema{[Name="EVENTS",Kind="Table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(EVENTS_Table,{{"TIMESTAMP", type date}})
+				in
+				    #"Changed Type"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

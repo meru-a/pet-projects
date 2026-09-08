@@ -1,0 +1,153 @@
+table DIM_USER
+	lineageTag: f002cf3d-2aec-4546-91f7-b05c3d7840c5
+
+	column CUSTOMER_ID
+		dataType: double
+		lineageTag: 3f735b54-fddd-49a0-a774-d02c62dacc24
+		summarizeBy: none
+		sourceColumn: CUSTOMER_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NAME
+		dataType: string
+		lineageTag: 6ead3457-9e48-483c-85b9-b133126c1062
+		summarizeBy: none
+		sourceColumn: NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column EMAIL
+		dataType: string
+		lineageTag: 2b4edac9-b1ff-4b28-93cd-d37ee8a89bd7
+		summarizeBy: none
+		sourceColumn: EMAIL
+
+		annotation SummarizationSetBy = Automatic
+
+	column COUNTRY
+		dataType: string
+		lineageTag: 67cf8d48-23aa-4c0e-ad71-f890c56176bc
+		summarizeBy: none
+		sourceColumn: COUNTRY
+
+		annotation SummarizationSetBy = Automatic
+
+	column AGE
+		dataType: double
+		lineageTag: f6ba588b-a631-4dcd-8723-a587da4b7d8d
+		summarizeBy: sum
+		sourceColumn: AGE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SIGNUP_DATE
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 4ae4fdf6-9465-4004-bd06-1d806d5e91ea
+		summarizeBy: none
+		sourceColumn: SIGNUP_DATE
+
+		variation Variation
+			isDefault
+			relationship: a54a31a7-0ac5-4660-a4ce-85f548932f28
+			defaultHierarchy: LocalDateTable_e16ca968-c2e4-423d-961b-0fbeb01ae7b9.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column MARKETING_OPT_IN
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 96a14685-5659-4390-9d56-9ddd4b07dd87
+		summarizeBy: none
+		sourceColumn: MARKETING_OPT_IN
+
+		annotation SummarizationSetBy = Automatic
+
+	column SIGNUP_COHORT_MONTH
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 730b814c-a47c-4484-a136-0cd33283f089
+		summarizeBy: none
+		sourceColumn: SIGNUP_COHORT_MONTH
+
+		variation Variation
+			isDefault
+			relationship: 2a43c7f7-b901-4856-97c2-70445bbd675c
+			defaultHierarchy: LocalDateTable_d3a47cee-bcef-40c9-a846-fdb16209f455.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column FIRST_ACTIVITY_DATE
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f84357ba-89d3-4bb8-aa8b-be5f1e39399f
+		summarizeBy: none
+		sourceColumn: FIRST_ACTIVITY_DATE
+
+		variation Variation
+			isDefault
+			relationship: 472b648c-83fb-48c8-9369-d8a0138edf87
+			defaultHierarchy: LocalDateTable_28ec497d-2d02-4477-a600-f923476a33c5.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column FIRST_PURCHASE_DATE
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d7f3efb9-1897-41d7-8d09-d247796c343f
+		summarizeBy: none
+		sourceColumn: FIRST_PURCHASE_DATE
+
+		variation Variation
+			isDefault
+			relationship: 6d819a44-f658-4952-94ac-ec4a31bf0806
+			defaultHierarchy: LocalDateTable_d07ace85-9b20-4a45-bc7b-d6af490c7fdf.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DAYS_TO_FIRST_ACTIVITY
+		dataType: double
+		lineageTag: 9cd671ee-e44e-4999-ab82-35264a6460b8
+		summarizeBy: sum
+		sourceColumn: DAYS_TO_FIRST_ACTIVITY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DAYS_TO_FIRST_PURCHASE
+		dataType: double
+		lineageTag: 2a59501a-e1c9-4124-bb3c-bfcf8e7101eb
+		summarizeBy: sum
+		sourceColumn: DAYS_TO_FIRST_PURCHASE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition DIM_USER = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("VTXZDMH-DP38522.snowflakecomputing.com","COMPUTE_WH",[Implementation="2.0"]),
+				    PRODUCT_ANALYTICS_Database = Source{[Name="PRODUCT_ANALYTICS",Kind="Database"]}[Data],
+				    ANALYTICS_Schema = PRODUCT_ANALYTICS_Database{[Name="ANALYTICS",Kind="Schema"]}[Data],
+				    DIM_USER_View = ANALYTICS_Schema{[Name="DIM_USER",Kind="View"]}[Data]
+				in
+				    DIM_USER_View
+
+	annotation PBI_ResultType = Table
+

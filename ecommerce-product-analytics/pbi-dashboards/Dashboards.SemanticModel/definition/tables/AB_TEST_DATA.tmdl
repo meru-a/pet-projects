@@ -1,0 +1,130 @@
+table AB_TEST_DATA
+	lineageTag: 0c60e63d-1c6e-4c55-ac10-ff7a2b40bb48
+
+	column CUSTOMERID
+		dataType: double
+		lineageTag: 0be7a450-19fc-41c0-bd18-3f98f7378bda
+		summarizeBy: count
+		sourceColumn: CUSTOMERID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TEST_GROUP
+		dataType: string
+		lineageTag: b47d1b00-798a-43f4-9b4a-63a6a761c6ad
+		summarizeBy: none
+		sourceColumn: TEST_GROUP
+
+		annotation SummarizationSetBy = Automatic
+
+	column MADE_PURCHASE
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e3586584-763b-4e7d-bce5-b6a3c28ef9ed
+		summarizeBy: none
+		sourceColumn: MADE_PURCHASE
+
+		annotation SummarizationSetBy = Automatic
+
+	column DAYS_WITH_MOST_AD
+		dataType: double
+		lineageTag: 9705763b-cc2a-46b9-953c-ba8139f94472
+		summarizeBy: sum
+		sourceColumn: DAYS_WITH_MOST_AD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PEAK_AD_HOURS
+		dataType: double
+		lineageTag: 2f6aacbb-434e-42ac-8eb6-75c29a7f2c7c
+		summarizeBy: sum
+		sourceColumn: PEAK_AD_HOURS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AD_COUNT
+		dataType: double
+		lineageTag: 75108e1d-4c91-4375-9a28-87585581b32c
+		summarizeBy: sum
+		sourceColumn: AD_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"AB_TEST_DATA","TableItemName":"AD_COUNT (groups)","ObjectType":4},"LinkType":"UsedInGroup"}]
+
+	column Purchasers = IF([MADE_PURCHASE], 1, 0)
+		formatString: 0
+		lineageTag: 06ef6107-bfd0-4a1e-a4d2-9f6a86f7cbd8
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AD_COUNT (groups)' =
+			SWITCH(
+				TRUE,
+				ISBLANK('AB_TEST_DATA'[AD_COUNT]),
+				"(Blank)",
+				'AB_TEST_DATA'[AD_COUNT] IN {6,
+					7,
+					8,
+					9,
+					10},
+				"High",
+				'AB_TEST_DATA'[AD_COUNT] IN {1,
+					2},
+				"Low",
+				'AB_TEST_DATA'[AD_COUNT] IN {3,
+					4,
+					5},
+				"Medium",
+				"Other"
+			)
+		lineageTag: 0a38ed66-79c0-4cac-93b7-c5616a0eccca
+		summarizeBy: none
+
+		extendedProperty GroupingMetadata =
+				{
+				  "version": 0,
+				  "groupedColumns": [
+				    {
+				      "Column": {
+				        "Expression": {
+				          "SourceRef": {
+				            "Entity": "AB_TEST_DATA"
+				          }
+				        },
+				        "Property": "AD_COUNT"
+				      }
+				    }
+				  ]
+				}
+
+		annotation GroupingDesignState = {"Version":0,"Sources":[{"Name":"a","Entity":"AB_TEST_DATA"}],"GroupedColumns":[{"Column":{"Expression":{"SourceRef":{"Source":"a"}},"Property":"AD_COUNT"}}],"GroupItems":[{"DisplayName":"(Blank)","BlankDefaultPlaceholder":true},{"DisplayName":"High","Expression":{"In":{"Expressions":[{"Column":{"Expression":{"SourceRef":{"Source":"a"}},"Property":"AD_COUNT"}}],"Values":[[{"Literal":{"Value":"6D"}}],[{"Literal":{"Value":"7D"}}],[{"Literal":{"Value":"8D"}}],[{"Literal":{"Value":"9D"}}],[{"Literal":{"Value":"10D"}}]]}}},{"DisplayName":"Low","Expression":{"In":{"Expressions":[{"Column":{"Expression":{"SourceRef":{"Source":"a"}},"Property":"AD_COUNT"}}],"Values":[[{"Literal":{"Value":"1D"}}],[{"Literal":{"Value":"2D"}}]]}}},{"DisplayName":"Medium","Expression":{"In":{"Expressions":[{"Column":{"Expression":{"SourceRef":{"Source":"a"}},"Property":"AD_COUNT"}}],"Values":[[{"Literal":{"Value":"3D"}}],[{"Literal":{"Value":"4D"}}],[{"Literal":{"Value":"5D"}}]]}}},{"DisplayName":"Other"}]}
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition AB_TEST_DATA = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("VTXZDMH-DP38522.snowflakecomputing.com","COMPUTE_WH",[Implementation="2.0"]),
+				    PRODUCT_ANALYTICS_Database = Source{[Name="PRODUCT_ANALYTICS",Kind="Database"]}[Data],
+				    UNRELATED_AB_TESTING_DATA_Schema = PRODUCT_ANALYTICS_Database{[Name="UNRELATED_AB_TESTING_DATA",Kind="Schema"]}[Data],
+				    AB_TEST_DATA_Table = UNRELATED_AB_TESTING_DATA_Schema{[Name="AB_TEST_DATA",Kind="Table"]}[Data]
+				in
+				    AB_TEST_DATA_Table
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

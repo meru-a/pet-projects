@@ -1,0 +1,101 @@
+table '0. Measures'
+	lineageTag: 82629e61-be5c-41f1-8cf1-3f09a2bf50b5
+
+	measure '# orders' = COUNT(ORDERS[ORDER_ID])
+		formatString: #,0
+		lineageTag: abbc495a-4916-4db8-8849-956ce1b11e44
+
+	measure '# customers' = DISTINCTCOUNT(CUSTOMERS_CLEAN[CUSTOMER_ID])
+		formatString: #,0
+		lineageTag: 4d82d305-10ad-48d1-8e06-5943c6c5d5d7
+
+	measure 'Total Revenue' = SUM(ORDERS[SUBTOTAL_USD])
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 85fb33e9-fa33-489d-9aa4-3fdadc6cb063
+
+	measure ProdRevenue = SUM(PRODUCT_PERFORMANCE[NET_PRODUCT_REVENUE])
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: d7b93f9f-e9a3-4e8b-b6da-18fca607cdc8
+
+	measure FunnelNums = COUNT(FCT_EVENTS[CUSTOMER_ID])
+		formatString: #,0
+		lineageTag: cde5bcf8-85cd-4cf5-9d0a-927ca03b8aca
+
+	measure Conversion =
+			DIVIDE(
+			    CALCULATE(SUM('FCT_EVENTS'[CUSTOMER_ID]),FCT_EVENTS[EVENT_TYPE]="purchase"),
+			    CALCULATE(SUM('FCT_EVENTS'[CUSTOMER_ID]),FCT_EVENTS[EVENT_TYPE]="page_view")
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 4fc236ed-1dec-4841-88e8-7ebeb6da9e4d
+
+	measure Retention = AVERAGE(USER_RETENTION[RETENTION_RATE])
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 3be461fe-740c-42f2-acfb-1ae344364afc
+
+	measure CustomersSegm = COUNT(FCT_CUSTOMER_SEGMENTS[CUSTOMER_ID])
+		formatString: #,0
+		lineageTag: 884e94d8-a23d-4765-975c-a505705db400
+
+	measure '# products' = COUNT(PRODUCTS[PRODUCT_ID])
+		formatString: #,0
+		lineageTag: db772f06-3c4b-46b2-b57f-b0d64d3110a0
+
+	measure ProdNetRevenue = SUM(PRODUCT_PERFORMANCE[GROSS_PRODUCT_REVENUE])
+		formatString: \$#,0.0;(\$#,0.0);\$#,0.0
+		lineageTag: 264e0f60-57cf-4b13-8fb0-27909b5c02e0
+
+	measure 'Units Sold' = SUM(PRODUCT_PERFORMANCE[UNITS_SOLD])
+		formatString: #,0
+		lineageTag: d9ffee68-3303-4d1c-8aad-3dca15ecc3a5
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure AvgSession = AVERAGEX(FCT_SESSIONS,[SESSION_DURATION_SECONDS]/60)
+		formatString: 0.0
+		lineageTag: 393534ba-e9c1-4388-b60a-4cea1bea1d07
+
+	measure Review% = DIVIDE( COUNT(FCT_REVIEWS_SENTIMENTS[REVIEW_ID]), CALCULATE(COUNT(FCT_REVIEWS_SENTIMENTS[REVIEW_ID]), ALL(FCT_REVIEWS_SENTIMENTS)))
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 8eaec30b-a5ca-4643-bea1-71936f75c010
+
+	measure '# reviews' = COUNT(FCT_REVIEWS_SENTIMENTS[REVIEW_ID])
+		formatString: #,0
+		lineageTag: 48f72538-736e-4ec9-9ebd-d7a9211ab846
+
+	measure 'Avg Rating' = AVERAGE(FCT_REVIEWS_SENTIMENTS[RATING])
+		lineageTag: 48f85783-097d-4c70-a91f-75c93ad446fb
+
+		formatStringDefinition = "0.0"" / 5"""
+
+	measure ABUsers = COUNT(AB_TEST_DATA[CUSTOMERID])
+		formatString: #,0
+		lineageTag: 447249b3-d337-498a-b022-beebabab8508
+
+	measure ABConversion = DIVIDE(sum(AB_TEST_DATA[Purchasers]), [ABUsers])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: bea62bbd-48b8-4822-93bd-6c4a7db38bef
+
+	measure %positive = DIVIDE(CALCULATE([# reviews], FCT_REVIEWS_SENTIMENTS[SENTIMENT]="positive"), CALCULATE([# reviews], ALL(FCT_REVIEWS_SENTIMENTS)))
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: f33ce9ef-dc6d-42a8-97f7-c850cec603fd
+
+	measure %negative = DIVIDE(CALCULATE([# reviews], FCT_REVIEWS_SENTIMENTS[SENTIMENT]="negative"), CALCULATE([# reviews], ALL(FCT_REVIEWS_SENTIMENTS)))
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 42892a5e-2d04-4763-a1fa-984a219d56f8
+
+	column Value
+		formatString: 0
+		lineageTag: 6069fb3e-f681-4eb1-8d4e-68794cf61414
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '0. Measures' = calculated
+		mode: import
+		source = {0}
+
+	annotation PBI_Id = 9b762aef58c44b60a4afecfaea3a9d80
+

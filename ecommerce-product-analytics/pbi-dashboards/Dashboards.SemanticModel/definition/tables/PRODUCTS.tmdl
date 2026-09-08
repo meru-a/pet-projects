@@ -1,0 +1,71 @@
+table PRODUCTS
+	lineageTag: bbd4c4e3-32c5-4b07-baf0-d6872a69653c
+
+	column PRODUCT_ID
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 6f2f01c2-6847-4058-9741-0f76bdd75f46
+		summarizeBy: none
+		sourceColumn: PRODUCT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CATEGORY
+		dataType: string
+		lineageTag: 11a95298-959a-492f-9d0e-182abb62a14b
+		summarizeBy: none
+		sourceColumn: CATEGORY
+
+		annotation SummarizationSetBy = Automatic
+
+	column NAME
+		dataType: string
+		lineageTag: a23fb195-09d7-48a6-bc7f-ecc89ec62765
+		summarizeBy: none
+		sourceColumn: NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRICE_USD
+		dataType: double
+		lineageTag: 9990c24f-bb5e-4f56-ba4c-b2efeec011af
+		summarizeBy: sum
+		sourceColumn: PRICE_USD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column COST_USD
+		dataType: double
+		lineageTag: d64b557c-1403-4892-adb0-f527e3b566b0
+		summarizeBy: sum
+		sourceColumn: COST_USD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MARGIN_USD
+		dataType: double
+		lineageTag: 02df9343-d6ab-447d-9ab2-ad05d7dfade1
+		summarizeBy: sum
+		sourceColumn: MARGIN_USD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition PRODUCTS = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("VTXZDMH-DP38522.snowflakecomputing.com","COMPUTE_WH",[Implementation="2.0"]),
+				    PRODUCT_ANALYTICS_Database = Source{[Name="PRODUCT_ANALYTICS",Kind="Database"]}[Data],
+				    RAW_EVENTS_Schema = PRODUCT_ANALYTICS_Database{[Name="RAW_EVENTS",Kind="Schema"]}[Data],
+				    PRODUCTS_Table = RAW_EVENTS_Schema{[Name="PRODUCTS",Kind="Table"]}[Data]
+				in
+				    PRODUCTS_Table
+
+	annotation PBI_ResultType = Table
+

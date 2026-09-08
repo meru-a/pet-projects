@@ -1,0 +1,77 @@
+table REVIEWS
+	lineageTag: 792caafb-6e7f-45f3-89b5-8e3d17caf0ef
+
+	column REVIEW_ID
+		dataType: double
+		lineageTag: 8dce272f-a5ed-4558-8ac3-1717cc6d9a4d
+		summarizeBy: count
+		sourceColumn: REVIEW_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ORDER_ID
+		dataType: double
+		lineageTag: f2a2fd09-c1c7-4609-808c-49554d4fa299
+		summarizeBy: none
+		sourceColumn: ORDER_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PRODUCT_ID
+		dataType: double
+		lineageTag: 8f10f5ea-920a-4ac6-be2d-942917f279be
+		summarizeBy: none
+		sourceColumn: PRODUCT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RATING
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 751ee1f6-b93b-40bc-ab82-d31a422e6b7f
+		summarizeBy: sum
+		sourceColumn: RATING
+
+		annotation SummarizationSetBy = Automatic
+
+	column REVIEW_TEXT
+		dataType: string
+		lineageTag: 884f4152-4ab9-48d0-9cc1-cf15ab8e601a
+		summarizeBy: none
+		sourceColumn: REVIEW_TEXT
+
+		annotation SummarizationSetBy = Automatic
+
+	column REVIEW_TIME
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a26f34ce-c2f4-4f5d-ad8b-ab334a24be0a
+		summarizeBy: none
+		sourceColumn: REVIEW_TIME
+
+		variation Variation
+			isDefault
+			relationship: c21c9e5a-98ec-491d-84be-da30467b44eb
+			defaultHierarchy: LocalDateTable_0dedc96f-93da-4912-be08-6771e20e32d6.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition REVIEWS = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("VTXZDMH-DP38522.snowflakecomputing.com","COMPUTE_WH",[Implementation="2.0"]),
+				    PRODUCT_ANALYTICS_Database = Source{[Name="PRODUCT_ANALYTICS",Kind="Database"]}[Data],
+				    RAW_EVENTS_Schema = PRODUCT_ANALYTICS_Database{[Name="RAW_EVENTS",Kind="Schema"]}[Data],
+				    REVIEWS_Table = RAW_EVENTS_Schema{[Name="REVIEWS",Kind="Table"]}[Data]
+				in
+				    REVIEWS_Table
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,268 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 1328.2548482968245,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 2116.6782510628909,
+            "y": 12.88502462322208
+          },
+          "nodeIndex": "AB_TEST_DATA",
+          "nodeLineageTag": "0c60e63d-1c6e-4c55-ac10-ff7a2b40bb48",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1944.7234973999534,
+            "y": 890.66410752563934
+          },
+          "nodeIndex": "CUSTOMERS_CLEAN",
+          "nodeLineageTag": "84c40415-9d2c-4839-948e-07fa5d19f03c",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1474.1781621601763,
+            "y": 500.93019230256482
+          },
+          "nodeIndex": "DIM_USER",
+          "nodeLineageTag": "f002cf3d-2aec-4546-91f7-b05c3d7840c5",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 635.25465579702814,
+            "y": -50
+          },
+          "nodeIndex": "EVENTS",
+          "nodeLineageTag": "b4564717-f742-446e-bb9f-173c64012a9b",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1649.7566687454307,
+            "y": 1008.3717229598738
+          },
+          "nodeIndex": "FCT_CUSTOMER_VALUE",
+          "nodeLineageTag": "b6ccb3df-805f-4957-9fad-a3fd21df8ad9",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 921.49763303240775,
+            "y": 359.99817829855829
+          },
+          "nodeIndex": "FCT_EVENTS",
+          "nodeLineageTag": "c694e2e2-8266-4b92-9fd4-7b811ea36b40",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1217.178762453952,
+            "y": 136.48106054830191
+          },
+          "nodeIndex": "FCT_SESSIONS",
+          "nodeLineageTag": "cc128c22-9159-4d2c-94b9-9dcd6ef18d40",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2084.0103463859141,
+            "y": 509.85793021356335
+          },
+          "nodeIndex": "FCT_USER_ACTIVITY",
+          "nodeLineageTag": "b69d02d6-2eca-40b5-bbf4-c7b0dc07cbe6",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 532.8508064086941,
+            "y": 929.20182343289378
+          },
+          "nodeIndex": "ORDER_ITEMS",
+          "nodeLineageTag": "16480172-c60b-469b-a6f4-e5d80419017e",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 940.842775410316,
+            "y": 869.38182874827316
+          },
+          "nodeIndex": "ORDERS",
+          "nodeLineageTag": "ebc82cfb-9894-47c2-828d-07b28b7b4d7b",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 339.53411003766587,
+            "y": 235.97904401975381
+          },
+          "nodeIndex": "PRODUCT_PERFORMANCE",
+          "nodeLineageTag": "617f2a30-4788-4c7f-b479-76d861bc4c3b",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 345.3284256343569
+          },
+          "nodeIndex": "PRODUCTS",
+          "nodeLineageTag": "bbd4c4e3-32c5-4b07-baf0-d6872a69653c",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 318.76852040049971,
+            "y": 644.478277586284
+          },
+          "nodeIndex": "REVIEWS",
+          "nodeLineageTag": "792caafb-6e7f-45f3-89b5-8e3d17caf0ef",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1512.3290258548836,
+            "y": 216.79989323665268
+          },
+          "nodeIndex": "SESSIONS",
+          "nodeLineageTag": "589e5fc1-743c-455e-9595-a39fc3c5f4bb",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2437.8528890893867,
+            "y": 14.927222917752033
+          },
+          "nodeIndex": "USER_RETENTION",
+          "nodeLineageTag": "6c0800c4-cc39-4b46-a2a9-de73675421e4",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2414.6907662048516,
+            "y": 299.48765463161379
+          },
+          "nodeIndex": "FCT_CUSTOMER_SEGMENTS",
+          "nodeLineageTag": "052dce16-25c0-4133-a530-45a32e47d5cc",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2766.0365892686686,
+            "y": 2.4436247194735188
+          },
+          "nodeIndex": "0. Measures",
+          "nodeLineageTag": "82629e61-be5c-41f1-8cf1-3f09a2bf50b5",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3000.0365892686686,
+            "y": 579.18586147993688
+          },
+          "nodeIndex": "Calendar",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3234.0365892686686,
+            "y": 529.18586147993688
+          },
+          "nodeIndex": "FCT_REVIEWS_SENTIMENTS",
+          "nodeLineageTag": "7e6eeccd-64ae-4bb6-bb02-6ce42d0fc5c5",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 40.0525547248832,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

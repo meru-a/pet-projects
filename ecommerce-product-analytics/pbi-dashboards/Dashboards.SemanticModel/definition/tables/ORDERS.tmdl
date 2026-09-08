@@ -1,0 +1,113 @@
+table ORDERS
+	lineageTag: ebc82cfb-9894-47c2-828d-07b28b7b4d7b
+
+	column ORDER_ID
+		dataType: double
+		lineageTag: 2fc510a9-30b1-4389-bca9-b1c44a2a0744
+		summarizeBy: none
+		sourceColumn: ORDER_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CUSTOMER_ID
+		dataType: double
+		lineageTag: 91a2c67b-63c5-45af-bc94-7dad680b0e5f
+		summarizeBy: none
+		sourceColumn: CUSTOMER_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ORDER_TIME
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: be2b32db-2ffb-479c-991c-2f6955b8e176
+		summarizeBy: none
+		sourceColumn: ORDER_TIME
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column PAYMENT_METHOD
+		dataType: string
+		lineageTag: f2316281-9af1-4729-ad21-afb54a6b5725
+		summarizeBy: none
+		sourceColumn: PAYMENT_METHOD
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISCOUNT_PCT
+		dataType: double
+		lineageTag: 4e584544-0437-4adf-9e57-fed865c02462
+		summarizeBy: sum
+		sourceColumn: DISCOUNT_PCT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SUBTOTAL_USD
+		dataType: double
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: fbcae35b-7c5b-4715-a82b-618e4ac7a321
+		summarizeBy: sum
+		sourceColumn: SUBTOTAL_USD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column TOTAL_USD
+		dataType: double
+		lineageTag: db0a0859-23dc-4393-9c31-d9a9c03affcb
+		summarizeBy: sum
+		sourceColumn: TOTAL_USD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column COUNTRY
+		dataType: string
+		lineageTag: 77ffddf5-5733-414f-8fc7-6460487d7f5a
+		summarizeBy: none
+		sourceColumn: COUNTRY
+
+		annotation SummarizationSetBy = Automatic
+
+	column DEVICE
+		dataType: string
+		lineageTag: 62903930-6e0a-4eb4-9bd9-b9320ca38d5e
+		summarizeBy: none
+		sourceColumn: DEVICE
+
+		annotation SummarizationSetBy = Automatic
+
+	column SOURCE
+		dataType: string
+		lineageTag: 1380ada7-88d8-4c41-8de4-7d0641ecfde2
+		summarizeBy: none
+		sourceColumn: SOURCE
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ORDERS = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("VTXZDMH-DP38522.snowflakecomputing.com","COMPUTE_WH",[Implementation="2.0"]),
+				    PRODUCT_ANALYTICS_Database = Source{[Name="PRODUCT_ANALYTICS",Kind="Database"]}[Data],
+				    RAW_EVENTS_Schema = PRODUCT_ANALYTICS_Database{[Name="RAW_EVENTS",Kind="Schema"]}[Data],
+				    ORDERS_Table = RAW_EVENTS_Schema{[Name="ORDERS",Kind="Table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(ORDERS_Table,{{"ORDER_TIME", type date}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

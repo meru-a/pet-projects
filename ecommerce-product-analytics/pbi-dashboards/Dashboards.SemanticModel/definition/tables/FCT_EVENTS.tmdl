@@ -1,0 +1,132 @@
+table FCT_EVENTS
+	lineageTag: c694e2e2-8266-4b92-9fd4-7b811ea36b40
+
+	column EVENT_ID
+		dataType: double
+		lineageTag: 146cbde7-bfa7-4593-942e-ab6f57b5bdfc
+		summarizeBy: none
+		sourceColumn: EVENT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CUSTOMER_ID
+		dataType: double
+		lineageTag: 0a653da2-2c07-4664-a1c2-45049c300c8a
+		summarizeBy: none
+		sourceColumn: CUSTOMER_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SESSION_ID
+		dataType: double
+		lineageTag: 287c1411-6103-405e-8698-8e25ca666972
+		summarizeBy: count
+		sourceColumn: SESSION_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TIMESTAMP
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4b00cba1-7110-4ba6-861c-82ea5da4d7b1
+		summarizeBy: none
+		sourceColumn: TIMESTAMP
+
+		variation Variation
+			isDefault
+			relationship: ca939d75-3c1c-48bb-aaa2-8d22593d8750
+			defaultHierarchy: LocalDateTable_9d61fc56-7da9-440e-99f8-261e1a753f8d.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column EVENT_DATE
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 44ea1040-8b8a-495a-a9ac-994c4457c154
+		summarizeBy: none
+		sourceColumn: EVENT_DATE
+
+		variation Variation
+			isDefault
+			relationship: 9069edb2-ee4d-4c59-b02a-280c73bebf88
+			defaultHierarchy: LocalDateTable_c5be27bc-81f7-4c00-ac7d-05bb8bb57e24.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column EVENT_TYPE
+		dataType: string
+		lineageTag: e1b9fe62-ee54-4ddb-acb4-13901132a16d
+		summarizeBy: none
+		sourceColumn: EVENT_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_ID
+		dataType: double
+		lineageTag: ecf46284-6de8-4add-9969-20fd3d375035
+		summarizeBy: none
+		sourceColumn: PRODUCT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SESSION_START_DATE
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: fb6d5546-8282-4ae1-8cc4-901fa6dd4235
+		summarizeBy: none
+		sourceColumn: SESSION_START_DATE
+
+		variation Variation
+			isDefault
+			relationship: f5222c0d-4384-4b48-92f4-ba74e200a8e6
+			defaultHierarchy: LocalDateTable_24cfdad1-7e33-4adb-a1d8-3aa0f03304de.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DEVICE
+		dataType: string
+		lineageTag: 4c99d47a-51c1-482f-8f61-f4d8442a6a9d
+		summarizeBy: none
+		sourceColumn: DEVICE
+
+		annotation SummarizationSetBy = Automatic
+
+	column SOURCE
+		dataType: string
+		lineageTag: 8c7816b8-6cf9-4d47-b141-555372ed37b2
+		summarizeBy: none
+		sourceColumn: SOURCE
+
+		annotation SummarizationSetBy = Automatic
+
+	column COUNTRY
+		dataType: string
+		lineageTag: 85044d39-0c4a-47aa-845a-bb39af3e7659
+		summarizeBy: none
+		sourceColumn: COUNTRY
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FCT_EVENTS = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("VTXZDMH-DP38522.snowflakecomputing.com","COMPUTE_WH",[Implementation="2.0"]),
+				    PRODUCT_ANALYTICS_Database = Source{[Name="PRODUCT_ANALYTICS",Kind="Database"]}[Data],
+				    ANALYTICS_Schema = PRODUCT_ANALYTICS_Database{[Name="ANALYTICS",Kind="Schema"]}[Data],
+				    FCT_EVENTS_View = ANALYTICS_Schema{[Name="FCT_EVENTS",Kind="View"]}[Data]
+				in
+				    FCT_EVENTS_View
+
+	annotation PBI_ResultType = Table
+

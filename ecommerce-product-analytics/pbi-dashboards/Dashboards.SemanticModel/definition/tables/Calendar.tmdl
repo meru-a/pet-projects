@@ -1,0 +1,120 @@
+table Calendar
+	lineageTag: 48aff033-9750-4468-8b6a-986d6327fa53
+
+	column Date
+		formatString: Short Date
+		lineageTag: 6693eda1-b3cf-4406-93c1-610ae02584b9
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 13410e0c-952e-4f15-af61-34ba5bef0a35
+			defaultHierarchy: LocalDateTable_51d79edf-9d15-4a7a-80e1-2f711ae33306.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		formatString: 0
+		lineageTag: 14deea05-0651-4804-aa33-23057db46842
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthNumber
+		formatString: 0
+		lineageTag: 51368f03-04cd-404d-a655-c5938d88d646
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [MonthNumber]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		lineageTag: 57df3690-0fa0-453f-861b-da1b56f1264d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearMonth
+		lineageTag: 9666ab22-9f87-42ff-ac74-7c9ba2bf89c9
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [YearMonth]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		lineageTag: b498a959-81c6-409a-98b4-bee0b3967fb0
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekDayNum
+		formatString: 0
+		lineageTag: 38da99a3-0502-4f78-bc7e-afa53d66f767
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [WeekDayNum]
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekDayEngShort
+		lineageTag: 8741f6fa-b3dc-45e5-8c9b-c2639d187a0b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [WeekDayEngShort]
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekNumber
+		formatString: 0
+		lineageTag: cd905642-ae3c-48fc-98d2-b9391ef9bb8e
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [WeekNumber]
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkDay
+		lineageTag: ee8b4304-8f88-403f-8a55-42b793218b07
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [WorkDay]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Calendar = calculated
+		mode: import
+		source = ```
+				ADDCOLUMNS(
+				CALENDAR(date(year(min(min('EVENTS'[TIMESTAMP]), min('EVENTS'[TIMESTAMP]))),1,1),
+				DATE(year(max(max('EVENTS'[TIMESTAMP]),max('EVENTS'[TIMESTAMP]))),12,31)), 
+				"Year", year([Date]),
+				"MonthNumber",  month([Date]),
+				"Month", format([Date], "mmmm"), 
+				"YearMonth", FORMAT([Date], "yyyy-mm"),
+				"Quarter", "Qtr " & FORMAT([Date], "q"),
+				"WeekDayNum", WEEKDAY([Date], 2),
+				"WeekDayEngShort", 
+				IF(WEEKDAY([Date], 2) = 1, "Mon",
+				IF(WEEKDAY([Date], 2) = 2, "Tue",
+				IF(WEEKDAY([Date], 2) = 3, "Wed",
+				IF(WEEKDAY([Date], 2) = 4, "Thu",
+				IF(WEEKDAY([Date], 2) = 5, "Fri",
+				IF(WEEKDAY([Date], 2) = 6, "Sat","Sun"
+				)))))), 
+				"WorkDay", SWITCH(WEEKDAY([Date], 2), 6, "Weekend", 7, "Weekend", "Workday"),
+				"WeekNumber", WEEKNUM([Date])
+				)
+				```
+
+	annotation PBI_Id = e001814b871245f7b920efe45c598b8f
+

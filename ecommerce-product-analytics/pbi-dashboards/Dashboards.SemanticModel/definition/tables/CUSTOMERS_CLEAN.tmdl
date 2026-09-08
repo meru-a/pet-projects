@@ -1,0 +1,109 @@
+table CUSTOMERS_CLEAN
+	isHidden
+	lineageTag: 84c40415-9d2c-4839-948e-07fa5d19f03c
+
+	column CUSTOMER_ID
+		dataType: double
+		isHidden
+		lineageTag: 89930ea8-1a69-4126-898d-42c4acedb25d
+		summarizeBy: none
+		sourceColumn: CUSTOMER_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NAME
+		dataType: string
+		isHidden
+		lineageTag: 9ac794c6-ae7f-4edf-b821-1d85aa4a4383
+		summarizeBy: none
+		sourceColumn: NAME
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column EMAIL
+		dataType: string
+		isHidden
+		lineageTag: 08aca277-e550-468c-8706-e24fe3cfc81e
+		summarizeBy: none
+		sourceColumn: EMAIL
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column COUNTRY
+		dataType: string
+		isHidden
+		lineageTag: 65f4a835-1975-4575-89ad-f70a2206aea1
+		summarizeBy: none
+		sourceColumn: COUNTRY
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column AGE
+		dataType: double
+		isHidden
+		lineageTag: 18b6f6ad-c4d2-452e-ade5-00c8ca265c0e
+		summarizeBy: sum
+		sourceColumn: AGE
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MARKETING_OPT_IN
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 4243292c-e23e-4914-b867-c8fc6e9a7597
+		summarizeBy: none
+		sourceColumn: MARKETING_OPT_IN
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SIGNUP_DATE
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: f68c1fbb-e5fd-447a-84df-7ef20dda4756
+		summarizeBy: none
+		sourceColumn: SIGNUP_DATE
+
+		variation Variation
+			isDefault
+			relationship: 060785ca-0c1b-467e-ac87-801de987aa1b
+			defaultHierarchy: LocalDateTable_a87f8924-4169-4cf4-8f75-9a2bfd9fb79d.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition CUSTOMERS_CLEAN = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("VTXZDMH-DP38522.snowflakecomputing.com","COMPUTE_WH",[Implementation="2.0"]),
+				    PRODUCT_ANALYTICS_Database = Source{[Name="PRODUCT_ANALYTICS",Kind="Database"]}[Data],
+				    RAW_EVENTS_Schema = PRODUCT_ANALYTICS_Database{[Name="RAW_EVENTS",Kind="Schema"]}[Data],
+				    CUSTOMERS_CLEAN_Table = RAW_EVENTS_Schema{[Name="CUSTOMERS_CLEAN",Kind="Table"]}[Data]
+				in
+				    CUSTOMERS_CLEAN_Table
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+

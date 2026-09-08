@@ -1,0 +1,15 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "27e7cd3230a49aff78b7",
+  "displayName": "Reviews",
+  "displayOption": "FitToPage",
+  "height": 930,
+  "width": 1280,
+  "visualInteractions": [
+    {
+      "source": "4ee1a676edbae8cd0255",
+      "target": "a4d8088e84d0bba9f5bd",
+      "type": "NoFilter"
+    }
+  ]
+}

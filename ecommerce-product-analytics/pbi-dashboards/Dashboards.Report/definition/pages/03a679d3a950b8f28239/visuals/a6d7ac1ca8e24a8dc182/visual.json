@@ -1,0 +1,184 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "a6d7ac1ca8e24a8dc182",
+  "position": {
+    "x": 255.09653311189538,
+    "y": 130.9495536641063,
+    "z": 11000,
+    "height": 122.44633589370977,
+    "width": 996.57712269047124,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "AB_TEST_DATA"
+                    }
+                  },
+                  "Property": "TEST_GROUP"
+                }
+              },
+              "queryRef": "AB_TEST_DATA.TEST_GROUP",
+              "nativeQueryRef": "TEST_GROUP",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "0. Measures"
+                    }
+                  },
+                  "Property": "ABUsers"
+                }
+              },
+              "queryRef": "0. Measures.ABUsers",
+              "nativeQueryRef": "Users",
+              "displayName": "Users"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "AB_TEST_DATA"
+                        }
+                      },
+                      "Property": "Purchasers"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(AB_TEST_DATA.Purchasers)",
+              "nativeQueryRef": "Purchasers",
+              "displayName": "Purchasers"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "AB_TEST_DATA"
+                        }
+                      },
+                      "Property": "AD_COUNT"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Sum(AB_TEST_DATA.AD_COUNT)",
+              "nativeQueryRef": "Avg Ad Count",
+              "displayName": "Avg Ad Count"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "AB_TEST_DATA"
+                        }
+                      },
+                      "Property": "DAYS_WITH_MOST_AD"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Sum(AB_TEST_DATA.DAYS_WITH_MOST_AD)",
+              "nativeQueryRef": "Avg Days with Ad",
+              "displayName": "Avg Days with Ad"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "AB_TEST_DATA"
+                        }
+                      },
+                      "Property": "PEAK_AD_HOURS"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Sum(AB_TEST_DATA.PEAK_AD_HOURS)",
+              "nativeQueryRef": "Avg Ad Hours",
+              "displayName": "Avg Ad Hours"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "AB_TEST_DATA"
+                  }
+                },
+                "Property": "TEST_GROUP"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "columnAdjustment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'fixedWidth'"
+                }
+              }
+            },
+            "defaultColumnWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "150D"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

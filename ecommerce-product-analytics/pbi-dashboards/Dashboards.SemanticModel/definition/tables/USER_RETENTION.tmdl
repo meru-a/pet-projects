@@ -1,0 +1,193 @@
+table USER_RETENTION
+	lineageTag: 6c0800c4-cc39-4b46-a2a9-de73675421e4
+
+	column SIGNUP_COHORT_MONTH
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: a20cdbd4-8ff5-4230-bf79-ca481a2c2c09
+		summarizeBy: none
+		sourceColumn: SIGNUP_COHORT_MONTH
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"USER_RETENTION","TableItemName":"SIGNUP_COHORT_MONTH (bins)","ObjectType":4},"LinkType":"UsedInGroup"}]
+
+	column DAYS_SINCE_SIGNUP
+		dataType: double
+		lineageTag: fcb29b8e-6dd9-4da7-baf9-b47b64fa45c0
+		summarizeBy: sum
+		sourceColumn: DAYS_SINCE_SIGNUP
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"USER_RETENTION","TableItemName":"DAYS_SINCE_SIGNUP (bins)","ObjectType":4},"LinkType":"UsedInGroup"},{"LinkTarget":{"TableName":"USER_RETENTION","TableItemName":"DAYS_SINCE_SIGNUP (months)","ObjectType":4},"LinkType":"UsedInGroup"}]
+
+	column COHORT_USERS
+		dataType: double
+		lineageTag: d49036fc-fd04-49f9-b757-578736a8fa0f
+		summarizeBy: sum
+		sourceColumn: COHORT_USERS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RETAINED_USERS
+		dataType: double
+		lineageTag: bc3669f3-d2ea-436b-a123-a163a26c3efd
+		summarizeBy: sum
+		sourceColumn: RETAINED_USERS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RETENTION_RATE
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 0fca8593-0511-478d-a9a0-70b6b7cf087c
+		summarizeBy: sum
+		sourceColumn: RETENTION_RATE
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'DAYS_SINCE_SIGNUP (bins)' =
+			IF(
+				ISBLANK('USER_RETENTION'[DAYS_SINCE_SIGNUP]),
+				BLANK(),
+				IF(
+					'USER_RETENTION'[DAYS_SINCE_SIGNUP] >= 0,
+					ROUNDDOWN('USER_RETENTION'[DAYS_SINCE_SIGNUP] / 7, 0) * 7,
+					ROUNDUP('USER_RETENTION'[DAYS_SINCE_SIGNUP] / 7, 0) * 7
+				)
+			)
+		formatString: 0
+		lineageTag: 4f532d40-ddc9-4167-9db9-0f0874f44cef
+		summarizeBy: none
+
+		extendedProperty GroupingMetadata =
+				{
+				  "version": 0,
+				  "groupedColumns": [
+				    {
+				      "Column": {
+				        "Expression": {
+				          "SourceRef": {
+				            "Entity": "USER_RETENTION"
+				          }
+				        },
+				        "Property": "DAYS_SINCE_SIGNUP"
+				      }
+				    }
+				  ],
+				  "binningMetadata": {
+				    "binSize": {
+				      "value": 7.0,
+				      "unit": 0
+				    }
+				  }
+				}
+
+		annotation GroupingDesignState = {"Version":0,"Sources":[{"Name":"u","Entity":"USER_RETENTION"}],"GroupedColumns":[{"Column":{"Expression":{"SourceRef":{"Source":"u"}},"Property":"DAYS_SINCE_SIGNUP"}}],"BinItem":{"Expression":{"Floor":{"Expression":{"Column":{"Expression":{"SourceRef":{"Source":"u"}},"Property":"DAYS_SINCE_SIGNUP"}},"Size":7.0}}}}
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column 'SIGNUP_COHORT_MONTH (bins)' =
+			IF(
+				ISBLANK('USER_RETENTION'[SIGNUP_COHORT_MONTH]),
+				BLANK(),
+				1 + (INT((INT('USER_RETENTION'[SIGNUP_COHORT_MONTH]) - 1) / 7) * 7)
+			)
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 50534e35-4ae7-47a7-96b3-4e29b80634c1
+		summarizeBy: none
+
+		extendedProperty GroupingMetadata =
+				{
+				  "version": 0,
+				  "groupedColumns": [
+				    {
+				      "Column": {
+				        "Expression": {
+				          "SourceRef": {
+				            "Entity": "USER_RETENTION"
+				          }
+				        },
+				        "Property": "SIGNUP_COHORT_MONTH"
+				      }
+				    }
+				  ],
+				  "binningMetadata": {
+				    "binSize": {
+				      "value": 7.0,
+				      "unit": 8
+				    }
+				  }
+				}
+
+		annotation GroupingDesignState = {"Version":0,"Sources":[{"Name":"u","Entity":"USER_RETENTION"}],"GroupedColumns":[{"Column":{"Expression":{"SourceRef":{"Source":"u"}},"Property":"SIGNUP_COHORT_MONTH"}}],"BinItem":{"Expression":{"Floor":{"Expression":{"Column":{"Expression":{"SourceRef":{"Source":"u"}},"Property":"SIGNUP_COHORT_MONTH"}},"Size":7.0,"TimeUnit":0}}}}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'DAYS_SINCE_SIGNUP (months)' =
+			IF(
+				ISBLANK('USER_RETENTION'[DAYS_SINCE_SIGNUP]),
+				BLANK(),
+				IF(
+					'USER_RETENTION'[DAYS_SINCE_SIGNUP] >= 0,
+					ROUNDDOWN('USER_RETENTION'[DAYS_SINCE_SIGNUP] / 30, 0) * 30,
+					ROUNDUP('USER_RETENTION'[DAYS_SINCE_SIGNUP] / 30, 0) * 30
+				)
+			)
+		lineageTag: 6f25b856-10a5-4fcd-95f2-df2b0add2969
+		summarizeBy: none
+
+		extendedProperty GroupingMetadata =
+				{
+				  "version": 0,
+				  "groupedColumns": [
+				    {
+				      "Column": {
+				        "Expression": {
+				          "SourceRef": {
+				            "Entity": "USER_RETENTION"
+				          }
+				        },
+				        "Property": "DAYS_SINCE_SIGNUP"
+				      }
+				    }
+				  ],
+				  "binningMetadata": {
+				    "binSize": {
+				      "value": 30.0,
+				      "unit": 0
+				    }
+				  }
+				}
+
+		annotation GroupingDesignState = {"Version":0,"Sources":[{"Name":"u","Entity":"USER_RETENTION"}],"GroupedColumns":[{"Column":{"Expression":{"SourceRef":{"Source":"u"}},"Property":"DAYS_SINCE_SIGNUP"}}],"BinItem":{"Expression":{"Floor":{"Expression":{"Column":{"Expression":{"SourceRef":{"Source":"u"}},"Property":"DAYS_SINCE_SIGNUP"}},"Size":30.0}}}}
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition USER_RETENTION = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("VTXZDMH-DP38522.snowflakecomputing.com","COMPUTE_WH",[Implementation="2.0"]),
+				    PRODUCT_ANALYTICS_Database = Source{[Name="PRODUCT_ANALYTICS",Kind="Database"]}[Data],
+				    ANALYTICS_Schema = PRODUCT_ANALYTICS_Database{[Name="ANALYTICS",Kind="Schema"]}[Data],
+				    USER_RETENTION_View = ANALYTICS_Schema{[Name="USER_RETENTION",Kind="View"]}[Data]
+				in
+				    USER_RETENTION_View
+
+	annotation PBI_ResultType = Table
+

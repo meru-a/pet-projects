@@ -1,0 +1,132 @@
+table FCT_REVIEWS_SENTIMENTS
+	lineageTag: 7e6eeccd-64ae-4bb6-bb02-6ce42d0fc5c5
+
+	column REVIEW_ID
+		dataType: double
+		lineageTag: edf779b2-720b-48b4-8659-b3b5f6dcd598
+		summarizeBy: count
+		sourceColumn: REVIEW_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ORDER_ID
+		dataType: double
+		lineageTag: 3cc25628-5e42-4047-a32c-60ad35b5045d
+		summarizeBy: count
+		sourceColumn: ORDER_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PRODUCT_ID
+		dataType: double
+		lineageTag: 038138b8-a76f-4be2-a405-7ddfcdb81117
+		summarizeBy: none
+		sourceColumn: PRODUCT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RATING
+		dataType: double
+		lineageTag: abb67868-4d93-4e03-b808-b93b1bfcc617
+		summarizeBy: sum
+		sourceColumn: RATING
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column REVIEW_TEXT
+		dataType: string
+		lineageTag: cd5f1a8c-760f-4c2e-8949-499826ab965f
+		summarizeBy: none
+		sourceColumn: REVIEW_TEXT
+
+		annotation SummarizationSetBy = Automatic
+
+	column REVIEW_TIME
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 4857ba81-3af0-4104-b2f6-1f52a24b1756
+		summarizeBy: none
+		sourceColumn: REVIEW_TIME
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column SENTIMENT
+		dataType: string
+		lineageTag: 6cfacd10-440d-4612-8ea1-805ffc9e2ace
+		summarizeBy: none
+		sourceColumn: SENTIMENT
+
+		annotation SummarizationSetBy = Automatic
+
+	column SENTIMENT_SCORE
+		dataType: double
+		lineageTag: 484fef4c-e1ab-4f08-a0cc-24fcc1656c3a
+		summarizeBy: sum
+		sourceColumn: SENTIMENT_SCORE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SENTIMENT_METHOD
+		dataType: string
+		lineageTag: 378bd6b8-cea6-46ed-952a-e49781f6ade3
+		summarizeBy: none
+		sourceColumn: SENTIMENT_METHOD
+
+		annotation SummarizationSetBy = Automatic
+
+	column TOPIC_ID
+		dataType: double
+		lineageTag: 58d10ef9-daaa-44f9-a44a-30682d4aa52a
+		summarizeBy: count
+		sourceColumn: TOPIC_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TOPIC
+		dataType: string
+		lineageTag: c4e67f81-0e89-47fd-b104-0e91948915dd
+		summarizeBy: none
+		sourceColumn: TOPIC
+
+		annotation SummarizationSetBy = Automatic
+
+	column TOPIC_CONFIDENCE
+		dataType: double
+		lineageTag: 5ad1ac76-4be6-4621-839f-674603c32ab8
+		summarizeBy: sum
+		sourceColumn: TOPIC_CONFIDENCE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition FCT_REVIEWS_SENTIMENTS = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("VTXZDMH-DP38522.snowflakecomputing.com","COMPUTE_WH",[Implementation="2.0"]),
+				    PRODUCT_ANALYTICS_Database = Source{[Name="PRODUCT_ANALYTICS",Kind="Database"]}[Data],
+				    ANALYTICS_Schema = PRODUCT_ANALYTICS_Database{[Name="ANALYTICS",Kind="Schema"]}[Data],
+				    FCT_REVIEWS_SENTIMENTS_Table = ANALYTICS_Schema{[Name="FCT_REVIEWS_SENTIMENTS",Kind="Table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(FCT_REVIEWS_SENTIMENTS_Table,{{"REVIEW_TIME", type date}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

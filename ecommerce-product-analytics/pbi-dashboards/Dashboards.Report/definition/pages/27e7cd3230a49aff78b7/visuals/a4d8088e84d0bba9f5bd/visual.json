@@ -1,0 +1,132 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "a4d8088e84d0bba9f5bd",
+  "position": {
+    "x": 255.76480679345661,
+    "y": 506.23792792911757,
+    "z": 19000,
+    "height": 425.09874784291753,
+    "width": 1024.8231223930916,
+    "tabOrder": 19000
+  },
+  "visual": {
+    "visualType": "pythonVisual",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FCT_REVIEWS_SENTIMENTS"
+                    }
+                  },
+                  "Property": "REVIEW_TEXT"
+                }
+              },
+              "queryRef": "FCT_REVIEWS_SENTIMENTS.REVIEW_TEXT",
+              "nativeQueryRef": "REVIEW_TEXT"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FCT_REVIEWS_SENTIMENTS"
+                    }
+                  },
+                  "Property": "SENTIMENT"
+                }
+              },
+              "queryRef": "FCT_REVIEWS_SENTIMENTS.SENTIMENT",
+              "nativeQueryRef": "SENTIMENT"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "FCT_REVIEWS_SENTIMENTS"
+                  }
+                },
+                "Property": "REVIEW_TEXT"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "script": [
+        {
+          "properties": {
+            "source": {
+              "expr": {
+                "Literal": {
+                  "Value": "'from sklearn.feature_extraction.text import TfidfVectorizer\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\nfig, axes = plt.subplots(1, 2, figsize=(14, 6))\n\nfor ax, sentiment in zip(axes, [\"positive\", \"negative\"]):\n\n    texts = dataset.loc[\n        dataset[\"SENTIMENT\"].str.lower() == sentiment,\n        \"REVIEW_TEXT\"\n    ].dropna()\n\n    tfidf = TfidfVectorizer(\n        stop_words=\"english\",\n        max_features=15\n    )\n\n    X = tfidf.fit_transform(texts)\n\n    scores = pd.Series(\n        X.mean(axis=0).A1,\n        index=tfidf.get_feature_names_out()\n    ).sort_values()\n\n    color = \"seagreen\" if sentiment == \"positive\" else \"indianred\"\n\n    bars = ax.barh(scores.index, scores.values, color=color)\n\n    # Data labels\n    for bar in bars:\n        ax.text(\n            bar.get_width() + 0.002,\n            bar.get_y() + bar.get_height() / 2,\n            f\"{bar.get_width():.3f}\",\n            va=\"center\"\n        )\n\n    ax.set_title(f\"{sentiment.title()} Reviews\")\n    ax.set_xlabel(\"Average TF-IDF\")\n\nplt.tight_layout()\nplt.show()'"
+                }
+              }
+            },
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Python'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Top TF-IDF Words'"
+                }
+              }
+            },
+            "heading": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Normal'"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#172554'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

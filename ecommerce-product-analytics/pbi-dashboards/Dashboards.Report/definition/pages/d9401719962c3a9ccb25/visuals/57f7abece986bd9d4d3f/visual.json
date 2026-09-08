@@ -1,0 +1,99 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "57f7abece986bd9d4d3f",
+  "position": {
+    "x": 740.58414464534076,
+    "y": 521.15180549116576,
+    "z": 19000,
+    "height": 183.5635914078195,
+    "width": 478.95327873074746,
+    "tabOrder": 19000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FCT_CUSTOMER_SEGMENTS"
+                    }
+                  },
+                  "Property": "KMEANS_CLUSTER"
+                }
+              },
+              "queryRef": "FCT_CUSTOMER_SEGMENTS.KMEANS_CLUSTER",
+              "nativeQueryRef": "KMeans Cluster",
+              "active": true,
+              "displayName": "KMeans Cluster"
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "0. Measures"
+                    }
+                  },
+                  "Property": "CustomersSegm"
+                }
+              },
+              "queryRef": "0. Measures.CustomersSegm",
+              "nativeQueryRef": "Customers",
+              "displayName": "Customers"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "FCT_CUSTOMER_SEGMENTS"
+                        }
+                      },
+                      "Property": "TOTAL_REVENUE"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(FCT_CUSTOMER_SEGMENTS.TOTAL_REVENUE)",
+              "nativeQueryRef": "Revenue",
+              "displayName": "Revenue"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "FCT_CUSTOMER_SEGMENTS"
+                        }
+                      },
+                      "Property": "ORDER_COUNT"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Sum(FCT_CUSTOMER_SEGMENTS.ORDER_COUNT)",
+              "nativeQueryRef": "Average of ORDER_COUNT",
+              "displayName": "Avg Order Count"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
