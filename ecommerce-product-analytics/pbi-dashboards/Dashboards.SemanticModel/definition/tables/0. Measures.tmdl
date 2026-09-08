@@ -23,8 +23,8 @@ table '0. Measures'
 
 	measure Conversion =
 			DIVIDE(
-			    CALCULATE(SUM('FCT_EVENTS'[CUSTOMER_ID]),FCT_EVENTS[EVENT_TYPE]="purchase"),
-			    CALCULATE(SUM('FCT_EVENTS'[CUSTOMER_ID]),FCT_EVENTS[EVENT_TYPE]="page_view")
+			    CALCULATE(COUNT('FCT_EVENTS'[CUSTOMER_ID]),FCT_EVENTS[EVENT_TYPE]="purchase"),
+			    CALCULATE(COUNT('FCT_EVENTS'[CUSTOMER_ID]),FCT_EVENTS[EVENT_TYPE]="page_view")
 			)
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: 4fc236ed-1dec-4841-88e8-7ebeb6da9e4d
