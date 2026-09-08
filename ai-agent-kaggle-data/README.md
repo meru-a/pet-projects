@@ -48,13 +48,15 @@ These are descriptive patterns, not causal effects. The source file does not pro
 ai-agent-kaggle-data/
 ├── data/
 │   └── marketing_campaign.csv
+├── archived-scripts/                 # Superseded deck-development iterations
+│   ├── build_deck.py
+│   ├── revise_deck.py
+│   └── add_profile_to_deck.py
 ├── about-dataset.md
-├── build_deck.py
-├── build_redesigned_deck.py
-├── revise_deck.py
-├── add_profile_to_deck.py
+├── build_redesigned_deck.py         # Active, standalone deck generator
 ├── Customer_Marketing_Executive_Analysis_final.pptx
-└── Customer_Marketing_Executive_Analysis_final.pdf
+├── Customer_Marketing_Executive_Analysis_final.pdf
+└── README.md
 ```
 
 ## Reproducing or adapting the deck
@@ -66,7 +68,7 @@ python -m pip install python-pptx
 python build_redesigned_deck.py
 ```
 
-`build_deck.py`, `revise_deck.py`, and `add_profile_to_deck.py` document earlier deck-development iterations. `build_redesigned_deck.py` is the standalone script that reads the local dataset and creates a redesigned presentation.
+`build_redesigned_deck.py` is the active standalone script: it reads the local dataset and creates the redesigned presentation. Earlier deck-development iterations are retained in `archive scripts/` for reference and are not part of the current reproduction path.
 
 ## Limitations
 
